@@ -1,0 +1,66 @@
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCities (20210330045545)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "cities" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210330045545"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRestaurants (20210330054604)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "style" varchar, "neighborhood" varchar, "notes" varchar, "top_dishes" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210330054604"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddCityIdToRestaurants (20210330055410)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "style" varchar DEFAULT NULL, "neighborhood" varchar DEFAULT NULL, "notes" varchar DEFAULT NULL, "top_dishes" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","style","neighborhood","notes","top_dishes","created_at","updated_at")
+                     SELECT "id","name","style","neighborhood","notes","top_dishes","created_at","updated_at" FROM "restaurants"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "style" varchar DEFAULT NULL, "neighborhood" varchar DEFAULT NULL, "notes" varchar DEFAULT NULL, "top_dishes" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "city_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","style","neighborhood","notes","top_dishes","created_at","updated_at")
+                     SELECT "id","name","style","neighborhood","notes","top_dishes","created_at","updated_at" FROM "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_restaurants_on_city_id" ON "restaurants" ("city_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "style" varchar DEFAULT NULL, "neighborhood" varchar DEFAULT NULL, "notes" varchar DEFAULT NULL, "top_dishes" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "city_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_arestaurants_on_city_id" ON "arestaurants" ("city_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","style","neighborhood","notes","top_dishes","created_at","updated_at","city_id")
+                     SELECT "id","name","style","neighborhood","notes","top_dishes","created_at","updated_at","city_id" FROM "restaurants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "style" varchar DEFAULT NULL, "neighborhood" varchar DEFAULT NULL, "notes" varchar DEFAULT NULL, "top_dishes" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "city_id" integer NOT NULL, CONSTRAINT "fk_rails_84a6c1e563"
+FOREIGN KEY ("city_id")
+  REFERENCES "cities" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_restaurants_on_city_id" ON "restaurants" ("city_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","style","neighborhood","notes","top_dishes","created_at","updated_at","city_id")
+                     SELECT "id","name","style","neighborhood","notes","top_dishes","created_at","updated_at","city_id" FROM "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210330055410"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-30 05:54:51.707649"], ["updated_at", "2021-03-30 05:54:51.707649"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Create (1.4ms)[0m  [1m[32mINSERT INTO "cities" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Seattle"], ["created_at", "2021-03-30 06:01:40.295496"], ["updated_at", "2021-03-30 06:01:40.295496"]]
+  [1m[36mRestaurant Create (0.8ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Pestle Rock"], ["style", "Thai"], ["top_dishes", "---\n- one\n- two\n- three\n"], ["created_at", "2021-03-30 06:01:40.300029"], ["updated_at", "2021-03-30 06:01:40.300029"], ["city_id", 1]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."name" = ? LIMIT ?[0m  [["name", "Pestle Rock"], ["LIMIT", 1]]
