@@ -1,0 +1,1 @@
+const restaurantList = document.getElementById("restaurant-list")
