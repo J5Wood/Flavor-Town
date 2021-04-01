@@ -292,3 +292,175 @@ Processing by RestaurantsController#show as HTML
 Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 830)
 
 
+Started GET "/restaurants/1" for ::1 at 2021-03-30 23:18:35 -0700
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRestaurant Load (0.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `show'
+Completed 200 OK in 28ms (Views: 2.5ms | ActiveRecord: 1.9ms | Allocations: 9714)
+
+
+Started GET "/restaurants" for ::1 at 2021-03-30 23:18:37 -0700
+Processing by RestaurantsController#index as HTML
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1122)
+
+
+Started GET "/" for ::1 at 2021-03-30 23:19:02 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/jeremywood/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/jeremywood/.rvm/gems/ruby-2.6.1/gems/railties-6.1.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.7ms | Allocations: 315)
+Completed 200 OK in 28ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 2445)
+
+
+Started GET "/cities" for ::1 at 2021-03-30 23:21:22 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 28ms (Views: 18.2ms | ActiveRecord: 2.0ms | Allocations: 6379)
+
+
+Started GET "/restaurants" for ::1 at 2021-03-30 23:25:49 -0700
+Processing by RestaurantsController#index as */*
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.5ms | Allocations: 867)
+
+
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Create (2.8ms)[0m  [1m[32mINSERT INTO "cities" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Seattle"], ["created_at", "2021-04-01 03:21:06.629328"], ["updated_at", "2021-04-01 03:21:06.629328"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCities (20210330045545)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "cities" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210330045545"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRestaurants (20210330054604)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "style" varchar, "neighborhood" varchar, "notes" varchar, "top_dishes" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210330054604"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddCityIdToRestaurants (20210330055410)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "style" varchar DEFAULT NULL, "neighborhood" varchar DEFAULT NULL, "notes" varchar DEFAULT NULL, "top_dishes" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","style","neighborhood","notes","top_dishes","created_at","updated_at")
+                     SELECT "id","name","style","neighborhood","notes","top_dishes","created_at","updated_at" FROM "restaurants"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "style" varchar DEFAULT NULL, "neighborhood" varchar DEFAULT NULL, "notes" varchar DEFAULT NULL, "top_dishes" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "city_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","style","neighborhood","notes","top_dishes","created_at","updated_at")
+                     SELECT "id","name","style","neighborhood","notes","top_dishes","created_at","updated_at" FROM "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_restaurants_on_city_id" ON "restaurants" ("city_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arestaurants" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "style" varchar DEFAULT NULL, "neighborhood" varchar DEFAULT NULL, "notes" varchar DEFAULT NULL, "top_dishes" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "city_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_arestaurants_on_city_id" ON "arestaurants" ("city_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arestaurants" ("id","name","style","neighborhood","notes","top_dishes","created_at","updated_at","city_id")
+                     SELECT "id","name","style","neighborhood","notes","top_dishes","created_at","updated_at","city_id" FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "style" varchar DEFAULT NULL, "neighborhood" varchar DEFAULT NULL, "notes" varchar DEFAULT NULL, "top_dishes" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "city_id" integer NOT NULL, CONSTRAINT "fk_rails_84a6c1e563"
+FOREIGN KEY ("city_id")
+  REFERENCES "cities" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_restaurants_on_city_id" ON "restaurants" ("city_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("id","name","style","neighborhood","notes","top_dishes","created_at","updated_at","city_id")
+                     SELECT "id","name","style","neighborhood","notes","top_dishes","created_at","updated_at","city_id" FROM "arestaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arestaurants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210330055410"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-04-01 04:09:31.589468"], ["updated_at", "2021-04-01 04:09:31.589468"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Create (0.4ms)[0m  [1m[32mINSERT INTO "cities" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "New York"], ["created_at", "2021-04-01 04:09:38.606980"], ["updated_at", "2021-04-01 04:09:38.606980"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mario's"], ["style", "Italian"], ["neighborhood", "Little Italy"], ["notes", "Neapolitan, family owned Italian."], ["top_dishes", "---\n- Spedini ala Romana\n- Mario’s epic seafood salad\n"], ["created_at", "2021-04-01 04:09:38.633481"], ["updated_at", "2021-04-01 04:09:38.633481"], ["city_id", 1]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Africa Kine"], ["style", "Senegalese"], ["neighborhood", "Harlem"], ["notes", "Takeout Only."], ["top_dishes", "---\n- Thiebu Djen\n- Mafe\n- Yassa\n"], ["created_at", "2021-04-01 04:09:38.638618"], ["updated_at", "2021-04-01 04:09:38.638618"], ["city_id", 1]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "La Morada"], ["style", "Mexican"], ["neighborhood", "The Bronx"], ["notes", "Oaxacan. Amazing Moles."], ["top_dishes", "---\n- Mole Oaxaqueño\n- Molcajete\n"], ["created_at", "2021-04-01 04:09:38.642952"], ["updated_at", "2021-04-01 04:09:38.642952"], ["city_id", 1]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Fieldtrip"], ["style", "American"], ["neighborhood", "Harlem"], ["notes", "Takeout Only."], ["top_dishes", "---\n- Texas Brown Rice\n- Spicy Seafood Gumbo\n- hibiscus rice milk soft serve\n"], ["created_at", "2021-04-01 04:09:38.648327"], ["updated_at", "2021-04-01 04:09:38.648327"], ["city_id", 1]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Create (0.3ms)[0m  [1m[32mINSERT INTO "cities" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Los Angeles"], ["created_at", "2021-04-01 04:09:38.653518"], ["updated_at", "2021-04-01 04:09:38.653518"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Broad Street Oyster Company"], ["style", "Seafood"], ["neighborhood", "Malibu"], ["notes", "Drive thru is an option!"], ["top_dishes", "---\n- Lobster Roll\n- Lobster Bisque\n"], ["created_at", "2021-04-01 04:09:38.658284"], ["updated_at", "2021-04-01 04:09:38.658284"], ["city_id", 2]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lum-Ka-Naad"], ["style", "Thai"], ["neighborhood", "Northridge"], ["notes", "Northern and southern Thai options"], ["top_dishes", "---\n- Gang Jerd PAak Dong Khem\n- Yum Ped Yang\n- Pladuk Pad Ped\n"], ["created_at", "2021-04-01 04:09:38.664405"], ["updated_at", "2021-04-01 04:09:38.664405"], ["city_id", 2]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Pasjoli"], ["style", "French"], ["neighborhood", "Santa Monica"], ["notes", "Parisian Bistro Dishes"], ["top_dishes", "---\n- Poussin Farci et Champagne\n- Steak au Poivre\n"], ["created_at", "2021-04-01 04:09:38.669928"], ["updated_at", "2021-04-01 04:09:38.669928"], ["city_id", 2]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mizlala"], ["style", "Mediterranean"], ["neighborhood", "Sherman Oaks"], ["notes", "Casual, small plates."], ["top_dishes", "---\n- Apricot Lamb Tagine\n- Grilled Branzino\n"], ["created_at", "2021-04-01 04:09:38.675245"], ["updated_at", "2021-04-01 04:09:38.675245"], ["city_id", 2]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Create (0.3ms)[0m  [1m[32mINSERT INTO "cities" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Seattle"], ["created_at", "2021-04-01 04:09:38.679920"], ["updated_at", "2021-04-01 04:09:38.679920"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Pestle Rock"], ["style", "Thai"], ["neighborhood", "Ballard"], ["notes", "Isan Style Thai"], ["top_dishes", "---\n- Kao Soi\n- Nam Tok\n"], ["created_at", "2021-04-01 04:09:38.684619"], ["updated_at", "2021-04-01 04:09:38.684619"], ["city_id", 3]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Barrio"], ["style", "Mexican"], ["neighborhood", "Capitol Hill"], ["notes", "Good stop for drinks."], ["top_dishes", "---\n- Beef Birria Quesadillas\n- Tauitos\n- Pozole\n"], ["created_at", "2021-04-01 04:09:38.690246"], ["updated_at", "2021-04-01 04:09:38.690246"], ["city_id", 3]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Itto's"], ["style", "Spanish"], ["neighborhood", "West Seattle"], ["notes", "Greate tapas."], ["top_dishes", "---\n- Tortilla Español\n- Berbere Burger\n"], ["created_at", "2021-04-01 04:09:38.695188"], ["updated_at", "2021-04-01 04:09:38.695188"], ["city_id", 3]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "style", "neighborhood", "notes", "top_dishes", "created_at", "updated_at", "city_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Big Mario's"], ["style", "Pizza"], ["neighborhood", "Capitol Hill"], ["notes", "Great late night slices."], ["top_dishes", "---\n- Kao Soi\n- Nam Tok\n"], ["created_at", "2021-04-01 04:09:38.701123"], ["updated_at", "2021-04-01 04:09:38.701123"], ["city_id", 3]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCity Create (0.3ms)[0m  [1m[32mINSERT INTO "cities" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Philadelphia"], ["created_at", "2021-04-01 04:09:38.705487"], ["updated_at", "2021-04-01 04:09:38.705487"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/restaurants" for ::1 at 2021-03-31 21:10:04 -0700
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RestaurantsController#index as HTML
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/controllers/restaurants_controller.rb:4:in `index'
+Completed 200 OK in 34ms (Views: 18.5ms | ActiveRecord: 1.1ms | Allocations: 12452)
+
+
