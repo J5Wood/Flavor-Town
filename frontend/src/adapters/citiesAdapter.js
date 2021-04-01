@@ -9,14 +9,13 @@ class CitiesAdapter {
     }
 
     listCities() {
-        // const citySelect = document.getElementById("city-select")
         this.getCities().then(data => {
             data.data.forEach( city => {
                 const newOption = document.createElement("option")
                 newOption.value = city.attributes.name.toLowerCase()
                 newOption.innerHTML = city.attributes.name
                 this.list.appendChild(newOption)
-            } )
+            })
         })
     }
 }
