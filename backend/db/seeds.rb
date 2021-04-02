@@ -14,7 +14,7 @@ n.restaurants.create(name: "Fieldtrip", style: "American", neighborhood: "Harlem
 
 l = City.create(name: "Los Angeles")
 l.restaurants.create(name: "Broad Street Oyster Company", style: "Seafood", neighborhood: "Malibu", notes: "Drive thru is an option!", top_dishes: ["Lobster Roll", "Lobster Bisque"])
-l.restaurants.create(name: "Lum-Ka-Naad", style: "Thai", neighborhood: "Northridge", notes: "Northern and southern Thai options", top_dishes: ["Gang Jerd PAak Dong Khem", "Yum Ped Yang", "Pladuk Pad Ped"])
+l.restaurants.create(name: "Lum-Ka-Naad", style: "Thai", neighborhood: "Northridge", notes: "Northern and southern Thai options", top_dishes: ["Gang Jerd Paak Dong Khem", "Yum Ped Yang", "Pladuk Pad Ped"])
 l.restaurants.create(name: "Pasjoli", style: "French", neighborhood: "Santa Monica", notes: "Parisian Bistro Dishes", top_dishes: ["Poussin Farci et Champagne", "Steak au Poivre"])
 l.restaurants.create(name: "Mizlala", style: "Mediterranean", neighborhood: "Sherman Oaks", notes: "Casual, small plates.", top_dishes: ["Apricot Lamb Tagine", "Grilled Branzino"])
 
@@ -22,7 +22,7 @@ s = City.create(name: "Seattle")
 s.restaurants.create(name: "Pestle Rock", style: "Thai", neighborhood: "Ballard", notes: "Isan Style Thai", top_dishes: ["Kao Soi", "Nam Tok"])
 s.restaurants.create(name: "Barrio", style: "Mexican", neighborhood: "Capitol Hill", notes: "Good stop for drinks.", top_dishes: ["Beef Birria Quesadillas", "Tauitos", "Pozole"])
 s.restaurants.create(name: "Itto's", style: "Spanish", neighborhood: "West Seattle", notes: "Greate tapas.", top_dishes: ["Tortilla Español", "Berbere Burger"])
-s.restaurants.create(name: "Big Mario's", style: "Pizza", neighborhood: "Capitol Hill", notes: "Great late night slices.", top_dishes: ["Kao Soi", "Nam Tok"])
+s.restaurants.create(name: "Big Mario's", style: "Pizza", neighborhood: "Capitol Hill", notes: "Great late night slices.", top_dishes: ["Pepperoni"])
 
 p = City.create(name: "Philadelphia")
 
