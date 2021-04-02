@@ -12,9 +12,9 @@ class CitiesAdapter {
         this.getCities().then(data => {
             data.data.forEach( city => {
                 const newOption = document.createElement("option")
-                newOption.value = city.attributes.name.toLowerCase()
+                newOption.value = city.id
                 newOption.innerHTML = city.attributes.name
-                this.list.appendChild(newOption)
+                this.list.appendChild(newOption)       
             })
         })
     }

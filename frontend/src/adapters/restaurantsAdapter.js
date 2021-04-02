@@ -1,10 +1,9 @@
-// class RestaurantsAdapter {
-//     constructor() {
-//         this.baseUrl = "http://localhost:3000"
-//     }
+class RestaurantsAdapter {
+    constructor() {
+        this.baseUrl = "http://localhost:3000"
+    }
 
-//     getRestaurants() {
-//         return fetch(this.baseUrl).then(resp => resp.json())
-//     }
-
-// }
+    getRestaurants(city) {
+        return fetch(this.baseUrl + "/cities/" + city + "/restaurants").then(resp => resp.json())
+    }
+}
