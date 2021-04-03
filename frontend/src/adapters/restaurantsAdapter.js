@@ -14,17 +14,7 @@ class RestaurantsAdapter {
         .then(data => {
             data.data.forEach(obj => {
                 let restaurant = new Restaurant(obj.attributes)
-                // console.log(restaurant)
-                // console.log(this)
                 restaurant.attachToDom()
-                // const restInfo = document.createElement("div")
-                
-                // restInfo.innerHTML = `
-                
-                // `
-                // this.list.append()
-                // restInfo.innerHTML = restaurant
-                // this.list.appendChild(restInfo)
             })
         })
     }
