@@ -17,8 +17,16 @@
     grid-row: 1 / span 1;
     height: 100vh;
     background-color: rgb(255, 221, 255);
+    justify-items: center;
 }
 
 h1 {
     color:rgb(255, 255, 255);
+}
+
+.restaurant-listing {
+    width: 43%;
+    background-color: teal;
+    float: left;
+    margin: 1%;
 }
