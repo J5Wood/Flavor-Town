@@ -9,11 +9,11 @@ class CitiesAdapter {
     }
 
     listCities() {
-        this.getCities().then(data => {
-            data.data.forEach( city => {
+        this.getCities().then(response => {
+            response.data.forEach( city => {
                 const newOption = document.createElement("option")
                 newOption.value = city.id
-                newOption.innerHTML = city.attributes.name
+                newOption.innerText = city.attributes.name
                 this.list.appendChild(newOption)       
             })
         })
