@@ -25,10 +25,18 @@ class Restaurant {
         Notes:
         <span>${this.notes}</span><br><br>
         Top Dishes:
-        <span>${this.top_dishes.join(", ")}</span><br><br>
+        <span>${this.handleTopDishes()}</span><br><br>
         `
         this.element.classList.add("restaurant-listing")
         return this.element
+    }
+
+    handleTopDishes() {
+        if (this.top_dishes.length == 1) {
+            return this.top_dishes[0]
+        } else {
+            return this.top_dishes.join(", ")
+        }
     }
 
 }

@@ -40,23 +40,31 @@ class RestaurantsAdapter {
         if (event.target.innerText == "Add New Restaurant") {
             this.restaurantForm.hidden = false
         } 
-        console.log(event.target.innerText)
+        // const addDish = document.getElementById("add-dish")
+        // addDish.addEventListener("click",event => this.addDishField(event))
     }
+
+    // addDishField(event) {
+    //     event.preventDefault
+    //     const topDishField = document.getElementById("top-dishes")
+    //     const newField = document.createElement("input")
+    //     newField.type = "text"
+    //     newField.classList.add("top-dishes")
+    //     topDishField.append(newField)
+    // }
 
 
     saveRestaurant(event, cityList) {
         event.preventDefault()
-        console.log(event)
 
-        
         const name = event.target.name.value
         const style = event.target.style.value
         const neighborhood = event.target.neighborhood.value
         const notes = event.target.notes.value
-        const top_dishes = event.target.top_dishes.value
+        const top_dishes = [event.target.top_dishes.value]
         const city_id = cityList.value
 
-        const newRest = {name, style, neighborhood, notes, top_dishes, city_id}
+        const newRest = {name, style, neighborhood, notes, city_id, top_dishes}
 
         let configObj = {
             method: `POST`,
@@ -68,6 +76,11 @@ class RestaurantsAdapter {
         }
         fetch(this.baseUrl + '/restaurants', configObj)
         .then(resp => resp.json())
-        .then(response => console.log(response))
+        .then(response => this.appendToDom(response))
+    }
+
+    appendToDom(resp) {
+        const newListing = new Restaurant(resp.data.attributes)
+        newListing.attachToDom()
     }
 }
