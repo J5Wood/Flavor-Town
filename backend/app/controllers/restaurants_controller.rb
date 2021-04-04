@@ -15,7 +15,6 @@ class RestaurantsController < ApplicationController
 
     def create
         restaurant = Restaurant.new(restaurant_params)
-       
         if restaurant.save
             render json: RestaurantSerializer.new(restaurant)
         else
@@ -27,6 +26,6 @@ class RestaurantsController < ApplicationController
     private
 
     def restaurant_params
-        params.require(:restaurant).permit(:name, :style, :neighborhood, :notes, :top_dishes, :city_id)
+        params.require(:restaurant).permit(:name, :style, :neighborhood, :notes, :city_id, :top_dishes => [])
     end
 end
