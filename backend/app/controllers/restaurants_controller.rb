@@ -22,6 +22,15 @@ class RestaurantsController < ApplicationController
         end
     end
 
+    def update
+        restaurant = Restaurant.find_by(id: params[:id])
+        if restaurant.update(restaurant_params)
+            render json: RestaurantSerializer.new(restaurant)
+        else
+            render json: {error: "ERROR"}
+        end
+    end
+
 
     private
 
