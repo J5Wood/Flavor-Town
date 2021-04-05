@@ -53,6 +53,12 @@ class RestaurantsAdapter {
         const top_dishes = [event.target.top_dishes.value]
         const city_id = cityList.value
 
+        event.target.name.value = ""
+        event.target.style.value = ""
+        event.target.neighborhood.value = ""
+        event.target.notes.value = ""
+        event.target.top_dishes.value = ""
+
         const newRest = {name, style, neighborhood, notes, city_id, top_dishes}
 
         let configObj = {
