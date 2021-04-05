@@ -1,4 +1,11 @@
 class Restaurant {
+
+    static all =[]
+
+    static findById(id) {
+        return Restaurant.all.find(rest => rest.id == id)
+    }
+
     constructor({name, style, neighborhood, notes, top_dishes, id}) {
         this.name = name
         this.style = style
@@ -8,6 +15,8 @@ class Restaurant {
         this.id = id
         this.element = document.createElement(`div`)
         this.list = document.getElementById(`restaurant-list`)
+        
+        Restaurant.all.push(this)
     }
 
     attachToDom() {
@@ -15,6 +24,14 @@ class Restaurant {
         this.list.append(this.element)
     }
 
+    updateDom({name, style, neighborhood, notes, top_dishes}) {
+        this.name = name,
+        this.style = style,
+        this.neighborhood = neighborhood,
+        this.notes = notes,
+        this.top_dishes = top_dishes
+        this.buildListing()
+    }
 
     buildListing() {
         this.element.innerHTML = `
@@ -38,7 +55,6 @@ class Restaurant {
         this.element.append(deleteButton)
         this.element.classList.add("restaurant-listing")
         this.element.id = `restaurant-${this.id}`
-        return this.element
     }
 
     editForm() {
@@ -61,6 +77,4 @@ class Restaurant {
         submitButton.addEventListener("click", event => restaurantsAdapter.sendPatchRequest(event))
         this.element.append(submitButton)
     }
-
-
 }

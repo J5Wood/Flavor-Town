@@ -12,6 +12,7 @@ class RestaurantsAdapter {
 
     listRestaurants(event) {
         this.list.innerHTML = ""
+        Restaurant.all = []
         this.getRestaurants(event.target.value)
         .then(data => {
             data.data.forEach(obj => {
@@ -40,18 +41,8 @@ class RestaurantsAdapter {
         if (event.target.innerText == "Add New Restaurant") {
             this.restaurantForm.hidden = false
         } 
-        // const addDish = document.getElementById("add-dish")
-        // addDish.addEventListener("click",event => this.addDishField(event))
     }
 
-    // addDishField(event) {
-    //     event.preventDefault
-    //     const topDishField = document.getElementById("top-dishes")
-    //     const newField = document.createElement("input")
-    //     newField.type = "text"
-    //     newField.classList.add("top-dishes")
-    //     topDishField.append(newField)
-    // }
 
 
     saveRestaurant(event, cityList) {
@@ -86,7 +77,6 @@ class RestaurantsAdapter {
     }
 
     sendPatchRequest(event) {
-        console.log(event)
         const name = document.getElementById(`update-name-${event.target.id}`).value
         const style = document.getElementById(`update-style-${event.target.id}`).value
         const neighborhood = document.getElementById(`update-neighborhood-${event.target.id}`).value
@@ -113,10 +103,10 @@ class RestaurantsAdapter {
         fetch(this.baseUrl + "/restaurants/" + event.target.id, configObj)
         .then(resp => resp.json())
         .then(response => {
-            const restaurant = document.getElementById(`restaurant-${event.target.id}`)
-            // restaurant.innerHtml=""
-            // restaurant.renderListing(response)
-            console.log(restaurant)
+
+            const restaurant = Restaurant.findById(response.data.attributes.id)
+            restaurant.updateDom(response.data.attributes)
+            
         })
 
 
