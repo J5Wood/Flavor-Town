@@ -6,6 +6,10 @@ class Restaurant {
         return Restaurant.all.find(rest => rest.id == id)
     }
 
+    static filterByStyle(style) {
+        return Restaurant.all.filter(rest => rest.style == style)
+    }
+
     constructor({name, style, neighborhood, notes, top_dishes, id}) {
         this.name = name
         this.style = style

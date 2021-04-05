@@ -28,19 +28,72 @@ class RestaurantsAdapter {
         const buttonsArray = ["Add New Restaurant", "Sort By", "Surprise Me"];
         buttonsArray.forEach(button => {
             const newDiv = document.createElement(`div`)
-            newDiv.classList.add(`${button.toLowerCase().split(" ").join("-")}-button`)
+            newDiv.id = `${button.toLowerCase().split(" ").join("-")}-button`
             const newButton = document.createElement(`button`)
             newButton.innerText = button
             newDiv.append(newButton)
             newDiv.addEventListener(`click`, event => this.handleRestaurantEvent(event))
             this.buttons.append(newDiv)
         })
+        this.appendSortForm()
+    }
+
+    appendSortForm() {
+        const sortByButton = document.getElementById("sort-by-button")
+        const sortForm = document.createElement("form")
+        sortForm.id = "sort-form"
+        sortForm.hidden = true
+        const restSelect = document.createElement("select")
+        restSelect.id = "sort-select"
+        restSelect.addEventListener("change", event => this.sortRestaurants(event))
+        sortForm.appendChild(restSelect)
+        sortByButton.append(sortForm)
+    }
+
+    sortRestaurants(event) {
+        if (event.target.value === "") {
+            return
+        } else if (event.target.value === "all"){
+            Restaurant.all.forEach(rest => rest.attachToDom())
+        } else {
+            const sortedRestaurants = Restaurant.filterByStyle(event.target.value)
+            this.list.innerHTML = ""
+            sortedRestaurants.forEach(rest => rest.attachToDom())
+        }
     }
 
     handleRestaurantEvent(event) {
-        if (event.target.innerText == "Add New Restaurant") {
-            this.restaurantForm.hidden = false
-        } 
+        if (event.target.innerText === "Add New Restaurant") {
+            console.log(event)
+            if (this.restaurantForm.hidden === true) {
+                this.restaurantForm.hidden = false
+            } else {
+                this.restaurantForm.hidden = true
+            }
+        } else if (event.target.innerText == "Sort By") {
+            const sortForm = document.getElementById("sort-form")
+            if (sortForm.hidden === true) {
+                sortForm.hidden = false
+                this.appendSortList(sortForm)
+            } else {
+                sortForm.hidden = true
+            }
+
+        }
+    }
+
+    appendSortList() {
+        const sortList = document.getElementById("sort-select")
+        sortList.innerHTML = `
+        <option value=""></option>
+        <option value="all">All</option>
+        `
+        Restaurant.all.forEach(rest => {
+            const newOption = document.createElement("option")
+            newOption.value = rest.style
+            newOption.innerText = rest.style
+            sortList.append(newOption)
+        })
     }
 
     saveRestaurant(event, cityList) {
