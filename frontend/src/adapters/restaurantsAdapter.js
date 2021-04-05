@@ -43,8 +43,6 @@ class RestaurantsAdapter {
         } 
     }
 
-
-
     saveRestaurant(event, cityList) {
         event.preventDefault()
 
@@ -103,12 +101,8 @@ class RestaurantsAdapter {
         fetch(this.baseUrl + "/restaurants/" + event.target.id, configObj)
         .then(resp => resp.json())
         .then(response => {
-
             const restaurant = Restaurant.findById(response.data.attributes.id)
-            restaurant.updateDom(response.data.attributes)
-            
+            restaurant.updateDom(response.data.attributes)          
         })
-
-
     }
 }
