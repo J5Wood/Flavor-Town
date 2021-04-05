@@ -50,7 +50,7 @@ class Restaurant {
         const deleteButton = document.createElement("button")
         deleteButton.innerText = "Delete"
         editButton.addEventListener("click", () => this.editForm())
-        deleteButton.addEventListener("click", event => console.log(event))
+        deleteButton.addEventListener("click", () => restaurantsAdapter.deleteRestaurant(this))
         this.element.append(editButton)
         this.element.append(deleteButton)
         this.element.classList.add("restaurant-listing")

@@ -105,4 +105,21 @@ class RestaurantsAdapter {
             restaurant.updateDom(response.data.attributes)          
         })
     }
+
+    deleteRestaurant(restaurant) {
+        let configObj = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+        }
+        fetch(this.baseUrl + "/restaurants/" + restaurant.id, configObj)
+        .then(resp => resp.json())
+        .then( () => this.removeRestFromDom(restaurant.id))
+    }
+
+    removeRestFromDom(id) {
+        document.getElementById(`restaurant-${id}`).remove()
+    }
 }
