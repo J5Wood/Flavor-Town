@@ -8445,3 +8445,2132 @@ Processing by RestaurantsController#show as HTML
 Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.9ms | Allocations: 665)
 
 
+Started GET "/cities" for ::1 at 2021-04-04 18:22:17 -0700
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 51ms (Views: 31.5ms | ActiveRecord: 3.0ms | Allocations: 14186)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 18:22:19 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 8.9ms | ActiveRecord: 0.5ms | Allocations: 5991)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 18:22:37 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rockoo", "style"=>"Thai", "neighborhood"=>"Ballarddddd", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rockoo", "style"=>"Thai", "neighborhood"=>"Ballarddddd", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.7ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "Pestle Rockoo"], ["updated_at", "2021-04-05 01:22:37.739306"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 25ms (Views: 0.6ms | ActiveRecord: 2.4ms | Allocations: 5848)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 19:13:01 -0700
+Processing by CitiesController#index as */*
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[36mCity Load (1.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 49ms (Views: 44.7ms | ActiveRecord: 6.5ms | Allocations: 5077)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 19:13:10 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.6ms | Allocations: 4480)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 19:13:22 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.4ms | Allocations: 3754)
+
+
+Started PATCH "/restaurants/5" for ::1 at 2021-04-04 19:13:30 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Maliboo", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"], "id"=>"5", "restaurant"=>{"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Maliboo", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Maliboo"], ["top_dishes", "---\n- Lobster Roll, Lobster Bisque\n"], ["updated_at", "2021-04-05 02:13:30.811430"], ["id", 5]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 2.3ms | Allocations: 3592)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 19:16:03 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.7ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 19:16:05 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1625)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 19:16:15 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "Pestle Rock"], ["neighborhood", "Ballard"], ["updated_at", "2021-04-05 02:16:15.489980"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 2.6ms | Allocations: 3533)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 19:17:31 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.6ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 19:17:33 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1625)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 19:17:39 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.9ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballardooooo"], ["updated_at", "2021-04-05 02:17:39.158460"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 55ms (Views: 0.5ms | ActiveRecord: 3.1ms | Allocations: 3518)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 19:17:50 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.6ms | Allocations: 4460)
+
+
+Started GET "/cities/4/restaurants" for ::1 at 2021-04-04 19:17:52 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"4"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 671)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 19:17:53 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1631)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 19:17:59 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballard"], ["updated_at", "2021-04-05 02:17:59.726314"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 1.8ms | Allocations: 3515)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 19:19:59 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 1.0ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 19:20:02 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 1625)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 19:20:07 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballardoooooo"], ["updated_at", "2021-04-05 02:20:07.864764"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 12ms (Views: 0.9ms | ActiveRecord: 1.8ms | Allocations: 3515)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 19:20:31 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.7ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 19:20:32 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 1625)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 19:20:40 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballard"], ["updated_at", "2021-04-05 02:20:40.176979"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 1.1ms | ActiveRecord: 2.0ms | Allocations: 3515)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 19:58:50 -0700
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 35ms (Views: 22.9ms | ActiveRecord: 2.2ms | Allocations: 14326)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 19:58:52 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.5ms | Allocations: 5991)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 19:58:59 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rockoooooo", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rockoooooo", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "Pestle Rockoooooo"], ["updated_at", "2021-04-05 02:58:59.619008"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 15ms (Views: 0.5ms | ActiveRecord: 1.8ms | Allocations: 4429)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:00:05 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms | Allocations: 3738)
+
+
+Started GET "/cities/1/restaurants" for ::1 at 2021-04-04 20:00:07 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1690)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:00:09 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1625)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:00:16 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "Pestle Rock"], ["updated_at", "2021-04-05 03:00:16.057040"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 1.7ms | Allocations: 3522)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:15:57 -0700
+Processing by CitiesController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 1.3ms | Allocations: 5056)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:16:04 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.3ms | Allocations: 1648)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:16:09 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.6ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballardooooo"], ["updated_at", "2021-04-05 03:16:09.897848"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 2.6ms | Allocations: 3563)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:16:21 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.8ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:16:23 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 1625)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:16:28 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballard"], ["updated_at", "2021-04-05 03:16:28.909971"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 3.4ms | Allocations: 3516)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:18:33 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.8ms | Allocations: 4461)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:18:35 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 31ms (Views: 29.8ms | ActiveRecord: 0.2ms | Allocations: 1626)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:18:40 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballardooooo"], ["updated_at", "2021-04-05 03:18:40.685367"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 1.6ms | Allocations: 3520)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:22:10 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.7ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:22:32 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 1631)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:22:40 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (1.1ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballard"], ["updated_at", "2021-04-05 03:22:40.403653"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.7ms | ActiveRecord: 2.8ms | Allocations: 3515)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:23:59 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.8ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:24:02 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 1625)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:24:08 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rockeeeee", "style"=>"Thai", "neighborhood"=>"Ballardeeeee", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rockeeeee", "style"=>"Thai", "neighborhood"=>"Ballardeeeee", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.6ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "Pestle Rockeeeee"], ["neighborhood", "Ballardeeeee"], ["updated_at", "2021-04-05 03:24:08.525334"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.7ms | ActiveRecord: 2.3ms | Allocations: 3524)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:26:43 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.6ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:26:45 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 1625)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:26:53 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "Pestle Rock"], ["neighborhood", "Ballard"], ["updated_at", "2021-04-05 03:26:53.675009"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 3.2ms | Allocations: 3524)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:27:54 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.8ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:28:04 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 1625)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:28:14 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rockooo", "style"=>"Thai", "neighborhood"=>"Ballardoooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rockooo", "style"=>"Thai", "neighborhood"=>"Ballardoooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "Pestle Rockooo"], ["neighborhood", "Ballardoooooo"], ["updated_at", "2021-04-05 03:28:14.941388"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 4.1ms | Allocations: 3532)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:28:25 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.6ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "Pestle Rock"], ["neighborhood", "Ballard"], ["updated_at", "2021-04-05 03:28:25.860669"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 2.1ms | Allocations: 3524)
+
+
+Started PATCH "/restaurants/10" for ::1 at 2021-04-04 20:28:45 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Barrio", "style"=>"Mexican", "neighborhood"=>"Cap Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"], "id"=>"10", "restaurant"=>{"name"=>"Barrio", "style"=>"Mexican", "neighborhood"=>"Cap Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Cap Hill"], ["top_dishes", "---\n- Beef Birria Quesadillas, Tauitos, Pozole\n"], ["updated_at", "2021-04-05 03:28:45.285876"], ["id", 10]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.9ms | ActiveRecord: 2.2ms | Allocations: 3543)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:28:57 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Poopperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Poopperoni"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Cap Hill"], ["top_dishes", "---\n- Poopperoni\n"], ["updated_at", "2021-04-05 03:28:57.593652"], ["id", 12]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.7ms | ActiveRecord: 1.9ms | Allocations: 3531)
+
+
+Started PATCH "/restaurants/11" for ::1 at 2021-04-04 20:29:02 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Itto's", "style"=>"Spanish", "neighborhood"=>"West Seattle", "notes"=>"Greate tapas.", "top_dishes"=>["Tortilla Español, Berbere Burger"], "id"=>"11", "restaurant"=>{"name"=>"Itto's", "style"=>"Spanish", "neighborhood"=>"West Seattle", "notes"=>"Greate tapas.", "top_dishes"=>["Tortilla Español, Berbere Burger"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["top_dishes", "---\n- Tortilla Español, Berbere Burger\n"], ["updated_at", "2021-04-05 03:29:02.980087"], ["id", 11]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 1.5ms | Allocations: 3565)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:29:24 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.2ms | Allocations: 3719)
+
+
+Started PATCH "/restaurants/5" for ::1 at 2021-04-04 20:29:30 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Malibu", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"], "id"=>"5", "restaurant"=>{"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Malibu", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Malibu"], ["updated_at", "2021-04-05 03:29:30.127321"], ["id", 5]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 2.1ms | Allocations: 3523)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:29:32 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1596)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:29:45 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["top_dishes", "---\n- Pepperoni\n"], ["updated_at", "2021-04-05 03:29:45.366946"], ["id", 12]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 2.3ms | Allocations: 3552)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:29:49 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 3024)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:30:07 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 3024)
+
+
+Started PATCH "/restaurants/11" for ::1 at 2021-04-04 20:30:09 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Itto's", "style"=>"Spanish", "neighborhood"=>"West Seattle", "notes"=>"Greate tapas.", "top_dishes"=>["Tortilla Español, Berbere Burger"], "id"=>"11", "restaurant"=>{"name"=>"Itto's", "style"=>"Spanish", "neighborhood"=>"West Seattle", "notes"=>"Greate tapas.", "top_dishes"=>["Tortilla Español, Berbere Burger"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 0.6ms | Allocations: 3022)
+
+
+Started PATCH "/restaurants/10" for ::1 at 2021-04-04 20:30:12 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Barrio", "style"=>"Mexican", "neighborhood"=>"Cap Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"], "id"=>"10", "restaurant"=>{"name"=>"Barrio", "style"=>"Mexican", "neighborhood"=>"Cap Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"]}}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 3022)
+
+
+Started PATCH "/restaurants/10" for ::1 at 2021-04-04 20:30:17 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Cap Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"], "id"=>"10", "restaurant"=>{"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Cap Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "style" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["style", "Mexicant"], ["updated_at", "2021-04-05 03:30:17.163257"], ["id", 10]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 1.8ms | Allocations: 3519)
+
+
+Started GET "/cities/1/restaurants" for ::1 at 2021-04-04 20:30:32 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 1671)
+
+
+Started PATCH "/restaurants/1" for ::1 at 2021-04-04 20:30:37 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Mario's", "style"=>"Italian", "neighborhood"=>"Little Italyyyy", "notes"=>"Neapolitan, family owned Italian.", "top_dishes"=>["Spedini ala Romana, Mario’s epic seafood salad"], "id"=>"1", "restaurant"=>{"name"=>"Mario's", "style"=>"Italian", "neighborhood"=>"Little Italyyyy", "notes"=>"Neapolitan, family owned Italian.", "top_dishes"=>["Spedini ala Romana, Mario’s epic seafood salad"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Little Italyyyy"], ["top_dishes", "---\n- Spedini ala Romana, Mario’s epic seafood salad\n"], ["updated_at", "2021-04-05 03:30:37.326019"], ["id", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 1.6ms | Allocations: 3538)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:30:39 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 3708)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:30:50 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 1594)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:30:56 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 3024)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:30:57 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 3024)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:30:58 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hill", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 3024)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:31:07 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballardoo"], ["updated_at", "2021-04-05 03:31:07.194911"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 1.6ms | Allocations: 3515)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:31:07 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 3021)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:31:08 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 3021)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:32:22 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.6ms | Allocations: 4461)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:32:25 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1596)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:32:54 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (2.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballard"], ["updated_at", "2021-04-05 03:32:54.397418"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 17ms (Views: 0.6ms | ActiveRecord: 5.9ms | Allocations: 3515)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:33:34 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.9ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 1.2ms | Allocations: 3021)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:34:11 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.6ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballardooo"], ["updated_at", "2021-04-05 03:34:11.543083"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 1.8ms | Allocations: 3515)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:34:16 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoooooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoooooooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballardoooooooo"], ["updated_at", "2021-04-05 03:34:16.690322"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 1.9ms | Allocations: 3515)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:34:21 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoooooooo", "notes"=>"Isan Style Thaiiiii", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoooooooo", "notes"=>"Isan Style Thaiiiii", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "notes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["notes", "Isan Style Thaiiiii"], ["updated_at", "2021-04-05 03:34:21.944109"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 2.1ms | Allocations: 3519)
+
+
+Started PATCH "/restaurants/10" for ::1 at 2021-04-04 20:34:26 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Cap Hillllll", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"], "id"=>"10", "restaurant"=>{"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Cap Hillllll", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Cap Hillllll"], ["updated_at", "2021-04-05 03:34:26.871358"], ["id", 10]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 1.7ms | Allocations: 3517)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:34:32 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hilllllll", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hilllllll", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"]}}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Cap Hilllllll"], ["updated_at", "2021-04-05 03:34:32.736425"], ["id", 12]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 2.0ms | Allocations: 3518)
+
+
+Started PATCH "/restaurants/11" for ::1 at 2021-04-04 20:34:39 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Itto's", "style"=>"Spanishshshs", "neighborhood"=>"West Seattle", "notes"=>"Greate tapas.", "top_dishes"=>["Tortilla Español, Berbere Burger"], "id"=>"11", "restaurant"=>{"name"=>"Itto's", "style"=>"Spanishshshs", "neighborhood"=>"West Seattle", "notes"=>"Greate tapas.", "top_dishes"=>["Tortilla Español, Berbere Burger"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "style" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["style", "Spanishshshs"], ["updated_at", "2021-04-05 03:34:39.160451"], ["id", 11]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 1.9ms | Allocations: 3516)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:34:42 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 3719)
+
+
+Started PATCH "/restaurants/5" for ::1 at 2021-04-04 20:34:58 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Malibubu", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"], "id"=>"5", "restaurant"=>{"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Malibubu", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Malibubu"], ["updated_at", "2021-04-05 03:34:58.799029"], ["id", 5]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 1.6ms | Allocations: 3523)
+
+
+Started PATCH "/restaurants/8" for ::1 at 2021-04-04 20:35:05 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Mizlala", "style"=>"Mediterraneanananan", "neighborhood"=>"Sherman Oaks", "notes"=>"Casual, small plates.", "top_dishes"=>["Apricot Lamb Tagine, Grilled Branzino"], "id"=>"8", "restaurant"=>{"name"=>"Mizlala", "style"=>"Mediterraneanananan", "neighborhood"=>"Sherman Oaks", "notes"=>"Casual, small plates.", "top_dishes"=>["Apricot Lamb Tagine, Grilled Branzino"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "style" = ?, "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["style", "Mediterraneanananan"], ["top_dishes", "---\n- Apricot Lamb Tagine, Grilled Branzino\n"], ["updated_at", "2021-04-05 03:35:05.881810"], ["id", 8]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 1.7ms | Allocations: 3534)
+
+
+Started PATCH "/restaurants/19" for ::1 at 2021-04-04 20:35:11 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"newnwe", "style"=>"werfwef", "neighborhood"=>"poooooo", "notes"=>"lalalalala", "top_dishes"=>["heyolenclbjss"], "id"=>"19", "restaurant"=>{"name"=>"newnwe", "style"=>"werfwef", "neighborhood"=>"poooooo", "notes"=>"lalalalala", "top_dishes"=>["heyolenclbjss"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["top_dishes", "---\n- heyolenclbjss\n"], ["updated_at", "2021-04-05 03:35:11.244381"], ["id", 19]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 2.0ms | Allocations: 3551)
+
+
+Started PATCH "/restaurants/16" for ::1 at 2021-04-04 20:35:29 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"aaa", "style"=>"ssss", "neighborhood"=>"ddddd", "notes"=>"ffffff", "top_dishes"=>["ggggggg"], "id"=>"16", "restaurant"=>{"name"=>"aaa", "style"=>"ssss", "neighborhood"=>"ddddd", "notes"=>"ffffff", "top_dishes"=>["ggggggg"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "style" = ?, "neighborhood" = ?, "notes" = ?, "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "aaa"], ["style", "ssss"], ["neighborhood", "ddddd"], ["notes", "ffffff"], ["top_dishes", "---\n- ggggggg\n"], ["updated_at", "2021-04-05 03:35:29.543579"], ["id", 16]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 1.5ms | Allocations: 3559)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:35:34 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms | Allocations: 1597)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:35:41 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hilllllllyyy", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hilllllllyyy", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Cap Hilllllllyyy"], ["updated_at", "2021-04-05 03:35:41.649599"], ["id", 12]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 1.8ms | Allocations: 3518)
+
+
+Started PATCH "/restaurants/12" for ::1 at 2021-04-04 20:35:42 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hilllllllyyy", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"], "id"=>"12", "restaurant"=>{"name"=>"Big Mario's", "style"=>"Pizza", "neighborhood"=>"Cap Hilllllllyyy", "notes"=>"Great late night slices.", "top_dishes"=>["Pepperoni"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 3024)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:35:50 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 3707)
+
+
+Started PATCH "/restaurants/6" for ::1 at 2021-04-04 20:35:56 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"], "id"=>"6", "restaurant"=>{"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"]}}
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "top_dishes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Northridgebbbb"], ["top_dishes", "---\n- Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped\n"], ["updated_at", "2021-04-05 03:35:56.418088"], ["id", 6]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 2.5ms | Allocations: 3543)
+
+
+Started PATCH "/restaurants/6" for ::1 at 2021-04-04 20:42:54 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"], "id"=>"6", "restaurant"=>{"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"]}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 0.9ms | Allocations: 3509)
+
+
+Started PATCH "/restaurants/6" for ::1 at 2021-04-04 20:46:31 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"], "id"=>"6", "restaurant"=>{"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 3025)
+
+
+Started PATCH "/restaurants/6" for ::1 at 2021-04-04 20:47:48 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"], "id"=>"6", "restaurant"=>{"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 3025)
+
+
+Started PATCH "/restaurants/6" for ::1 at 2021-04-04 20:48:04 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"], "id"=>"6", "restaurant"=>{"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridgebbbb", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 3025)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:49:59 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.7ms | Allocations: 4479)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:50:29 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.7ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:50:35 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 1617)
+
+
+Started PATCH "/restaurants/10" for ::1 at 2021-04-04 20:50:51 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Cap Hillllllyooo", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"], "id"=>"10", "restaurant"=>{"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Cap Hillllllyooo", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Cap Hillllllyooo"], ["updated_at", "2021-04-05 03:50:51.345027"], ["id", 10]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 2.7ms | Allocations: 3517)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:50:57 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms | Allocations: 3675)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:51:02 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 1594)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:51:20 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.2ms | Allocations: 3675)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:52:01 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 1594)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:52:11 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.2ms | Allocations: 3675)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:52:15 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.8ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:52:17 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1594)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:52:24 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thaiiiii", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thaiiiii", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballard"], ["updated_at", "2021-04-05 03:52:24.935606"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 1.9ms | Allocations: 3517)
+
+
+Started PATCH "/restaurants/10" for ::1 at 2021-04-04 20:52:36 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Cap Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"], "id"=>"10", "restaurant"=>{"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Cap Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Cap Hill"], ["updated_at", "2021-04-05 03:52:36.546512"], ["id", 10]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 1.9ms | Allocations: 3517)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:52:39 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 3683)
+
+
+Started PATCH "/restaurants/6" for ::1 at 2021-04-04 20:52:44 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridge", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"], "id"=>"6", "restaurant"=>{"name"=>"Lum-Ka-Naad", "style"=>"Thai", "neighborhood"=>"Northridge", "notes"=>"Northern and southern Thai options", "top_dishes"=>["Gang Jerd Paak Dong Khem, Yum Ped Yang, Pladuk Pad Ped"]}}
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Northridge"], ["updated_at", "2021-04-05 03:52:44.286378"], ["id", 6]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 1.9ms | Allocations: 3520)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:52:46 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 1595)
+
+
+Started PATCH "/restaurants/10" for ::1 at 2021-04-04 20:52:52 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Capitol Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"], "id"=>"10", "restaurant"=>{"name"=>"Barrio", "style"=>"Mexicant", "neighborhood"=>"Capitol Hill", "notes"=>"Good stop for drinks.", "top_dishes"=>["Beef Birria Quesadillas, Tauitos, Pozole"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Capitol Hill"], ["updated_at", "2021-04-05 03:52:52.997456"], ["id", 10]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.9ms | ActiveRecord: 2.0ms | Allocations: 3517)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:52:59 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "notes" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["notes", "Isan Style Thai"], ["updated_at", "2021-04-05 03:52:59.562452"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 1.7ms | Allocations: 3516)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:54:02 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.7ms | Allocations: 4460)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:54:04 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 1594)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:54:14 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardoooo", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballardoooo"], ["updated_at", "2021-04-05 03:54:14.434736"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 1.8ms | Allocations: 3515)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:54:19 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.8ms | Allocations: 4460)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:54:21 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms | Allocations: 3675)
+
+
+Started PATCH "/restaurants/5" for ::1 at 2021-04-04 20:54:24 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Malibu", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"], "id"=>"5", "restaurant"=>{"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Malibu", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Malibu"], ["updated_at", "2021-04-05 03:54:24.673576"], ["id", 5]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 2.2ms | Allocations: 3523)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:54:26 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms | Allocations: 1594)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:54:30 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballard"], ["updated_at", "2021-04-05 03:54:30.486383"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 1.8ms | Allocations: 3515)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 20:54:32 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms | Allocations: 3675)
+
+
+Started PATCH "/restaurants/5" for ::1 at 2021-04-04 20:54:38 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Malibuuuuu", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"], "id"=>"5", "restaurant"=>{"name"=>"Broad Street Oyster Company", "style"=>"Seafood", "neighborhood"=>"Malibuuuuu", "notes"=>"Drive thru is an option!", "top_dishes"=>["Lobster Roll, Lobster Bisque"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Malibuuuuu"], ["updated_at", "2021-04-05 03:54:38.187806"], ["id", 5]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 1.9ms | Allocations: 3523)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 20:56:10 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 1.1ms | Allocations: 4461)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:56:12 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms | Allocations: 1596)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:56:16 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardafewca", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballardafewca", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballardafewca"], ["updated_at", "2021-04-05 03:56:16.827261"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 3.2ms | Allocations: 3515)
+
+
+Started GET "/cities/1/restaurants" for ::1 at 2021-04-04 20:56:19 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"1"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1659)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 20:56:21 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.3ms | Allocations: 1594)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 20:56:26 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "neighborhood" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["neighborhood", "Ballard"], ["updated_at", "2021-04-05 03:56:26.994289"], ["id", 9]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 12ms (Views: 0.7ms | ActiveRecord: 2.1ms | Allocations: 3515)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 21:01:18 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.7ms | Allocations: 4460)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 21:01:20 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 3683)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 21:06:02 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.7ms | Allocations: 4460)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 21:06:13 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 3675)
+
+
+Started DELETE "/restaurants/21" for ::1 at 2021-04-04 21:06:15 -0700
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for RestaurantsController):
+  
+actionpack (6.1.3.1) lib/abstract_controller/base.rb:160:in `process'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.3.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.3.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.3.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started DELETE "/restaurants/21" for ::1 at 2021-04-04 21:06:57 -0700
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RestaurantsController#destroy as JSON
+  Parameters: {"id"=>"21", "restaurant"=>{}}
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ (byebug):1:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ (byebug):1:in `destroy'
+  [1m[36mRestaurant Destroy (0.8ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 21]]
+  ↳ (byebug):1:in `destroy'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ (byebug):1:in `destroy'
+Started GET "/cities" for ::1 at 2021-04-04 21:13:23 -0700
+Completed 500 Internal Server Error in 386323ms (ActiveRecord: 4.1ms | Allocations: 295691)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `destroy'
+app/controllers/restaurants_controller.rb:36:in `destroy'
+Processing by CitiesController#index as */*
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[36mCity Load (1.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 248ms (Views: 223.9ms | ActiveRecord: 21.3ms | Allocations: 2865623)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 21:13:53 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/restaurants_controller.rb:4:in `index'
+  [1m[36mRestaurant Load (1.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 194ms (Views: 115.8ms | ActiveRecord: 15.6ms | Allocations: 2175032)
+
+
+Started PATCH "/restaurants/9" for ::1 at 2021-04-04 21:13:59 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"], "id"=>"9", "restaurant"=>{"name"=>"Pestle Rock", "style"=>"Thai", "neighborhood"=>"Ballard", "notes"=>"Isan Style Thai", "top_dishes"=>["Kao Soi, Nam Tok"]}}
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (0.9ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 209ms (Views: 10.6ms | ActiveRecord: 14.3ms | Allocations: 2337360)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 21:14:03 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (1.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 121ms (Views: 112.5ms | ActiveRecord: 1.2ms | Allocations: 1471661)
+
+
+Started DELETE "/restaurants/20" for ::1 at 2021-04-04 21:14:05 -0700
+Processing by RestaurantsController#destroy as JSON
+  Parameters: {"id"=>"20", "restaurant"=>{}}
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mRestaurant Destroy (1.6ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 20]]
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+Completed 200 OK in 70ms (Views: 5.3ms | ActiveRecord: 8.1ms | Allocations: 651510)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 21:20:00 -0700
+Processing by CitiesController#index as */*
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[36mCity Load (5.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 256ms (Views: 242.9ms | ActiveRecord: 18.9ms | Allocations: 2096612)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 21:20:03 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (4.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 65ms (Views: 53.5ms | ActiveRecord: 4.3ms | Allocations: 705699)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 21:20:05 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (1.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 117ms (Views: 108.8ms | ActiveRecord: 1.1ms | Allocations: 1375930)
+
+
+Started DELETE "/restaurants/19" for ::1 at 2021-04-04 21:20:09 -0700
+Processing by RestaurantsController#destroy as JSON
+  Parameters: {"id"=>"19", "restaurant"=>{}}
+  [1m[36mRestaurant Load (1.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mRestaurant Destroy (4.8ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 19]]
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+Completed 200 OK in 72ms (Views: 2.7ms | ActiveRecord: 9.1ms | Allocations: 656030)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 21:20:56 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (5.9ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 193ms (Views: 176.7ms | ActiveRecord: 12.9ms | Allocations: 1802467)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 21:21:10 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (3.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 112ms (Views: 98.5ms | ActiveRecord: 3.9ms | Allocations: 1280200)
+
+
+Started DELETE "/restaurants/18" for ::1 at 2021-04-04 21:21:12 -0700
+Processing by RestaurantsController#destroy as JSON
+  Parameters: {"id"=>"18", "restaurant"=>{}}
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mRestaurant Destroy (2.0ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+Completed 200 OK in 66ms (Views: 1.8ms | ActiveRecord: 6.1ms | Allocations: 650753)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 21:24:12 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (4.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 204ms (Views: 186.5ms | ActiveRecord: 11.3ms | Allocations: 1790109)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 21:24:17 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 102ms (Views: 93.9ms | ActiveRecord: 1.0ms | Allocations: 1184469)
+
+
+Started DELETE "/restaurants/17" for ::1 at 2021-04-04 21:24:19 -0700
+Processing by RestaurantsController#destroy as JSON
+  Parameters: {"id"=>"17", "restaurant"=>{}}
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mRestaurant Destroy (3.8ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+Completed 200 OK in 65ms (Views: 4.4ms | ActiveRecord: 13.9ms | Allocations: 650751)
+
+
+Started GET "/cities" for ::1 at 2021-04-04 21:26:30 -0700
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (4.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 207ms (Views: 192.1ms | ActiveRecord: 9.5ms | Allocations: 1782778)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 21:26:33 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (4.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 101ms (Views: 89.9ms | ActiveRecord: 4.1ms | Allocations: 1088738)
+
+
+Started PATCH "/restaurants/16" for ::1 at 2021-04-04 21:26:38 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"aaaasdcac", "style"=>"ssss", "neighborhood"=>"ddddd", "notes"=>"ffffff", "top_dishes"=>["ggggggg"], "id"=>"16", "restaurant"=>{"name"=>"aaaasdcac", "style"=>"ssss", "neighborhood"=>"ddddd", "notes"=>"ffffff", "top_dishes"=>["ggggggg"]}}
+  [1m[36mRestaurant Load (3.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (3.8ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (1.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["name", "aaaasdcac"], ["updated_at", "2021-04-05 04:26:38.426663"], ["id", 16]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 146ms (Views: 11.2ms | ActiveRecord: 10.8ms | Allocations: 1513997)
+
+
+Started DELETE "/restaurants/16" for ::1 at 2021-04-04 21:26:39 -0700
+Processing by RestaurantsController#destroy as JSON
+  Parameters: {"id"=>"16", "restaurant"=>{}}
+  [1m[36mRestaurant Load (0.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mRestaurant Destroy (1.4ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+Completed 200 OK in 64ms (Views: 1.7ms | ActiveRecord: 4.3ms | Allocations: 650753)
+
+
+Started PATCH "/restaurants/15" for ::1 at 2021-04-04 21:26:47 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"wee", "style"=>"wooowowowowo", "neighborhood"=>"oooww", "notes"=>"wowowowow", "top_dishes"=>["hahahahahah"], "id"=>"15", "restaurant"=>{"name"=>"wee", "style"=>"wooowowowowo", "neighborhood"=>"oooww", "notes"=>"wowowowow", "top_dishes"=>["hahahahahah"]}}
+  [1m[36mRestaurant Load (0.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (1.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (1.1ms)[0m  [1m[33mUPDATE "restaurants" SET "style" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["style", "wooowowowowo"], ["updated_at", "2021-04-05 04:26:47.552497"], ["id", 15]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 145ms (Views: 9.7ms | ActiveRecord: 5.9ms | Allocations: 1510417)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-04-04 21:26:50 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 69ms (Views: 60.9ms | ActiveRecord: 1.0ms | Allocations: 700422)
+
+
+Started PATCH "/restaurants/11" for ::1 at 2021-04-04 21:26:59 -0700
+Processing by RestaurantsController#update as JSON
+  Parameters: {"name"=>"Itto's", "style"=>"Spanish", "neighborhood"=>"West Seattle", "notes"=>"Greate tapas.", "top_dishes"=>["Tortilla Español, Berbere Burger"], "id"=>"11", "restaurant"=>{"name"=>"Itto's", "style"=>"Spanish", "neighborhood"=>"West Seattle", "notes"=>"Greate tapas.", "top_dishes"=>["Tortilla Español, Berbere Burger"]}}
+  [1m[36mRestaurant Load (3.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mCity Load (1.1ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mRestaurant Update (4.6ms)[0m  [1m[33mUPDATE "restaurants" SET "style" = ?, "updated_at" = ? WHERE "restaurants"."id" = ?[0m  [["style", "Spanish"], ["updated_at", "2021-04-05 04:26:59.936523"], ["id", 11]]
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:27:in `update'
+Completed 200 OK in 164ms (Views: 11.3ms | ActiveRecord: 11.2ms | Allocations: 1692693)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-04-04 21:27:02 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mRestaurant Load (1.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:8:in `index'
+Completed 200 OK in 81ms (Views: 72.6ms | ActiveRecord: 1.2ms | Allocations: 993006)
+
+
+Started DELETE "/restaurants/15" for ::1 at 2021-04-04 21:27:04 -0700
+Processing by RestaurantsController#destroy as JSON
+  Parameters: {"id"=>"15", "restaurant"=>{}}
+  [1m[36mRestaurant Load (0.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mRestaurant Destroy (4.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/restaurants_controller.rb:36:in `destroy'
+Completed 200 OK in 58ms (Views: 1.6ms | ActiveRecord: 7.0ms | Allocations: 650751)
+
+

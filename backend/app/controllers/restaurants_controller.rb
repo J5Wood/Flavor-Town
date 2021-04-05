@@ -31,6 +31,14 @@ class RestaurantsController < ApplicationController
         end
     end
 
+    def destroy
+        restaurant = Restaurant.find_by(id: params[:id])
+        if restaurant.destroy
+            render json: {message: "Succesfully deleted #{restaurant.name}"}
+        else
+            render json: {error: "ERROR"}
+        end
+    end
 
     private
 
