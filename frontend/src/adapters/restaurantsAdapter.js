@@ -82,5 +82,43 @@ class RestaurantsAdapter {
     appendToDom(resp) {
         const newListing = new Restaurant(resp.data.attributes)
         newListing.attachToDom()
+        this.restaurantForm.hidden = true
+    }
+
+    sendPatchRequest(event) {
+        console.log(event)
+        const name = document.getElementById(`update-name-${event.target.id}`).value
+        const style = document.getElementById(`update-style-${event.target.id}`).value
+        const neighborhood = document.getElementById(`update-neighborhood-${event.target.id}`).value
+        const notes = document.getElementById(`update-notes-${event.target.id}`).value
+        const topDishes = [document.getElementById(`update-top-dishes-${event.target.id}`).value]
+        
+        const updatedRestaurant = {
+            name: name,
+            style: style,
+            neighborhood: neighborhood,
+            notes: notes,
+            top_dishes: topDishes
+        }
+
+        let configObj = {
+            method: `PATCH`,
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(updatedRestaurant)
+        }
+
+        fetch(this.baseUrl + "/restaurants/" + event.target.id, configObj)
+        .then(resp => resp.json())
+        .then(response => {
+            const restaurant = document.getElementById(`restaurant-${event.target.id}`)
+            // restaurant.innerHtml=""
+            // restaurant.renderListing(response)
+            console.log(restaurant)
+        })
+
+
     }
 }
