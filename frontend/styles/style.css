@@ -12,7 +12,6 @@
     border-style: solid;
     border-radius: 2px;
     border-color: #253628;
-
 }
 
 #main {
@@ -20,8 +19,6 @@
     grid-row: 1 / span 1;
     height: 100vh;
     background-color:#E3E6DA;
-    /* justify-items: center;
-    justify-content: center; */
 }
 
 #main-title-1 {
