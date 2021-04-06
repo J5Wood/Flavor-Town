@@ -40,6 +40,10 @@
     margin-left: 15%;
 }
 
+#create-city {
+    margin-left: 15%;
+}
+
 #restaurant-list {
     color: #EBEBE9;
     text-indent: 5%;
@@ -51,8 +55,8 @@
     color:#253628;
 }
 
-h1 {
-    color:rgb(255, 255, 255);
+#new-city {
+    color: seashell;
 }
 
 .restaurant-listing {
