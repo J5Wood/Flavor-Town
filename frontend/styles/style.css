@@ -59,6 +59,10 @@
     color: seashell;
 }
 
+#city-title {
+    color: #0f1610;
+}
+
 .restaurant-listing {
     width: 43%;
     background-color:#49654C;

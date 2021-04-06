@@ -4,28 +4,68 @@ class RestaurantsAdapter {
         this.list = document.getElementById("restaurant-list")
         this.restaurantForm = document.getElementById("restaurant-form")
         this.buttons = document.getElementById("buttons")
+        // this.cityList= document.getElementById("city-title")
     }
 
     getRestaurants(city) {
         return fetch(this.baseUrl + "/cities/" + city + "/restaurants").then(resp => resp.json())
     }
 
-    listRestaurants(event) {
+  
+    handleRestSelection(event) {
         if (event.target.value === "none") {
             return
         } else {
-            this.list.innerHTML = ""
+            this.listRestaurants(parseInt(event.target.value))
+        }
+    }
+
+ 
+        // if (event.target.value === "none") {
+        //     return
+        // } else {
+        listRestaurants(city) {
+            this.list.innerHTML = `
+            <div id="city-id" hidden="true">${city}</div>
+            <h2 id="city-title">${City.findById(city).name}</h2>
+            `
             Restaurant.all = []
-            this.getRestaurants(event.target.value)
+            this.getRestaurants(city)
             .then(data => {
                 data.data.forEach(obj => {
                     let restaurant = new Restaurant(obj.attributes)
                     restaurant.attachToDom()
                 })
             })
-        }
+        // }
         this.buttonDisplay()
     }
+
+
+
+
+
+    // listRestaurants(event) {
+    //     if (event.target.value === "none") {
+    //         return
+    //     } else {
+    //         this.list.innerHTML = ""
+    //         Restaurant.all = []
+    //         this.getRestaurants(event.target.value)
+    //         .then(data => {
+    //             data.data.forEach(obj => {
+    //                 let restaurant = new Restaurant(obj.attributes)
+    //                 restaurant.attachToDom()
+    //             })
+    //         })
+    //     }
+    //     this.buttonDisplay()
+    // }
+
+
+
+
+
 
     buttonDisplay() {
         this.buttons.innerHTML = ""
@@ -100,7 +140,7 @@ class RestaurantsAdapter {
         })
     }
 
-    saveRestaurant(event, cityList) {
+    saveRestaurant(event) {
         event.preventDefault()
 
         const name = event.target.name.value
@@ -108,7 +148,7 @@ class RestaurantsAdapter {
         const neighborhood = event.target.neighborhood.value
         const notes = event.target.notes.value
         const top_dishes = [event.target.top_dishes.value]
-        const city_id = cityList.value
+        const city_id = document.getElementById("city-id").innerText
 
         event.target.name.value = ""
         event.target.style.value = ""

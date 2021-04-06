@@ -6,6 +6,6 @@ const newCityButton = document.getElementById("create-city")
 
 window.addEventListener("DOMContentLoaded", citiesAdapter.listCities())
 
-cityList.addEventListener("change", event => restaurantsAdapter.listRestaurants(event))
-restaurantForm.addEventListener(`submit`, event => restaurantsAdapter.saveRestaurant(event, cityList))
+cityList.addEventListener("change", event => restaurantsAdapter.handleRestSelection(event))
+restaurantForm.addEventListener(`submit`, event => restaurantsAdapter.saveRestaurant(event))
 newCityButton.addEventListener("click", () => citiesAdapter.appendCityForm())

@@ -1,6 +1,6 @@
 class Restaurant {
 
-    static all =[]
+    static all = []
 
     static findById(id) {
         return Restaurant.all.find(rest => rest.id == id)

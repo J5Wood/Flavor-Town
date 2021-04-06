@@ -14,11 +14,13 @@ class CitiesAdapter {
         this.list.innerHTML = `
         <option value="none"></option>
         `
+        City.all = []
         this.getCities().then(response => {
             response.data.forEach( city => {
+                const newCity = new City(city.attributes)
                 const newOption = document.createElement("option")
-                newOption.value = city.id
-                newOption.innerText = city.attributes.name
+                newOption.value = newCity.id
+                newOption.innerText = newCity.name
                 this.list.appendChild(newOption)       
             })
         })
@@ -53,13 +55,16 @@ class CitiesAdapter {
 
         fetch(this.baseUrl, configObj)
         .then(resp => resp.json())
-        .then(() => {
+        .then(response => {
             this.newCityButton.hidden = false
             const cityForm = document.getElementById("city-form")
             cityForm.remove()
-            this.listCities()
+            const newCity = new City(response.data.attributes)
+            const newOption = document.createElement("option")
+            newOption.value = newCity.id
+            newOption.innerText = newCity.name
+            this.list.appendChild(newOption)
+            restaurantsAdapter.listRestaurants(response.data.attributes.id)
         })
-
-
     }
 }
