@@ -4,7 +4,6 @@ class RestaurantsAdapter {
         this.list = document.getElementById("restaurant-list")
         this.restaurantForm = document.getElementById("restaurant-form")
         this.buttons = document.getElementById("buttons")
-        // this.cityList= document.getElementById("city-title")
     }
 
     getRestaurants(city) {
@@ -20,52 +19,21 @@ class RestaurantsAdapter {
         }
     }
 
- 
-        // if (event.target.value === "none") {
-        //     return
-        // } else {
-        listRestaurants(city) {
-            this.list.innerHTML = `
-            <div id="city-id" hidden="true">${city}</div>
-            <h2 id="city-title">${City.findById(city).name}</h2>
-            `
-            Restaurant.all = []
-            this.getRestaurants(city)
-            .then(data => {
-                data.data.forEach(obj => {
-                    let restaurant = new Restaurant(obj.attributes)
-                    restaurant.attachToDom()
-                })
+    listRestaurants(city) {
+        this.list.innerHTML = `
+        <div id="city-id" hidden="true">${city}</div>
+        <h2 id="city-title">${City.findById(city).name}</h2>
+        `
+        Restaurant.all = []
+        this.getRestaurants(city)
+        .then(data => {
+            data.data.forEach(obj => {
+                let restaurant = new Restaurant(obj.attributes)
+                restaurant.attachToDom()
             })
-        // }
-        this.buttonDisplay()
+        })
+    this.buttonDisplay()
     }
-
-
-
-
-
-    // listRestaurants(event) {
-    //     if (event.target.value === "none") {
-    //         return
-    //     } else {
-    //         this.list.innerHTML = ""
-    //         Restaurant.all = []
-    //         this.getRestaurants(event.target.value)
-    //         .then(data => {
-    //             data.data.forEach(obj => {
-    //                 let restaurant = new Restaurant(obj.attributes)
-    //                 restaurant.attachToDom()
-    //             })
-    //         })
-    //     }
-    //     this.buttonDisplay()
-    // }
-
-
-
-
-
 
     buttonDisplay() {
         this.buttons.innerHTML = ""
@@ -118,7 +86,7 @@ class RestaurantsAdapter {
             const sortForm = document.getElementById("sort-form")
             if (sortForm.hidden === true) {
                 sortForm.hidden = false
-                this.appendSortList(sortForm)
+                this.appendSortedList()
             } else {
                 sortForm.hidden = true
             }
@@ -126,7 +94,7 @@ class RestaurantsAdapter {
         }
     }
 
-    appendSortList() {
+    appendSortedList() {
         const sortList = document.getElementById("sort-select")
         sortList.innerHTML = `
         <option value=""></option>

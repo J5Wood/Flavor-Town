@@ -4,6 +4,11 @@ class CitiesAdapter {
         this.list = document.getElementById("city-select")
         this.newCityDiv = document.getElementById("new-city")
         this.newCityButton = document.getElementById("create-city")
+        this.addEventListener()
+    }
+
+    addEventListener() {
+        this.newCityButton.addEventListener("click", () => this.appendCityForm())
     }
     
     getCities() {
