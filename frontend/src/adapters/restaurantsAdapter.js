@@ -11,15 +11,19 @@ class RestaurantsAdapter {
     }
 
     listRestaurants(event) {
-        this.list.innerHTML = ""
-        Restaurant.all = []
-        this.getRestaurants(event.target.value)
-        .then(data => {
-            data.data.forEach(obj => {
-                let restaurant = new Restaurant(obj.attributes)
-                restaurant.attachToDom()
+        if (event.target.value === "none") {
+            return
+        } else {
+            this.list.innerHTML = ""
+            Restaurant.all = []
+            this.getRestaurants(event.target.value)
+            .then(data => {
+                data.data.forEach(obj => {
+                    let restaurant = new Restaurant(obj.attributes)
+                    restaurant.attachToDom()
+                })
             })
-        })
+        }
         this.buttonDisplay()
     }
 
