@@ -4,10 +4,11 @@ class CitiesAdapter {
         this.list = document.getElementById("city-select")
         this.newCityDiv = document.getElementById("new-city")
         this.newCityButton = document.getElementById("create-city")
-        this.addEventListener()
+        this.addEventListeners()
     }
 
-    addEventListener() {
+    addEventListeners() {
+        this.list.addEventListener("change", event => restaurantsAdapter.handleRestSelection(event))
         this.newCityButton.addEventListener("click", () => this.appendCityForm())
     }
     
@@ -62,7 +63,7 @@ class CitiesAdapter {
             const cityForm = document.getElementById("city-form")
             cityForm.remove()
             new City(response.data.attributes)
-            restaurantsAdapter.listRestaurants(response.data.attributes.id)
+            restaurantsAdapter.fetchRestaurants(response.data.attributes.id)
         })
     }
 }

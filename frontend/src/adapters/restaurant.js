@@ -3,11 +3,11 @@ class Restaurant {
     static all = []
 
     static findById(id) {
-        return Restaurant.all.find(rest => rest.id == id)
+        return Restaurant.all.find(rest => rest.id === id)
     }
 
     static filterByStyle(style) {
-        return Restaurant.all.filter(rest => rest.style == style)
+        return Restaurant.all.filter(rest => rest.style === style)
     }
 
     constructor({name, style, neighborhood, notes, top_dishes, id}) {
@@ -18,14 +18,14 @@ class Restaurant {
         this.top_dishes = top_dishes
         this.id = id
         this.element = document.createElement(`div`)
-        this.list = document.getElementById(`restaurant-list`)
+        this.sortSelection = this.createSortSelection()
         
         Restaurant.all.push(this)
     }
 
     attachToDom() {
         this.buildListing()
-        this.list.append(this.element)
+        restaurantsAdapter.list.append(this.element)
     }
 
     updateDom({name, style, neighborhood, notes, top_dishes}) {
@@ -80,5 +80,12 @@ class Restaurant {
         submitButton.id = `${this.id}`
         submitButton.addEventListener("click", event => restaurantsAdapter.sendPatchRequest(event))
         this.element.append(submitButton)
+    }
+
+    createSortSelection() {
+        const newOption = document.createElement("option")
+        newOption.value = this.style
+        newOption.innerText = this.style
+        return newOption
     }
 }

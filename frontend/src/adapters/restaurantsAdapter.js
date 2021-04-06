@@ -3,23 +3,23 @@ class RestaurantsAdapter {
         this.baseUrl = "http://localhost:3000"
         this.list = document.getElementById("restaurant-list")
         this.restaurantForm = document.getElementById("restaurant-form")
-        this.buttons = document.getElementById("buttons")
+        this.buttonsDiv = document.getElementById("buttons-div")
+        this.restaurantForm.addEventListener(`submit`, event => this.saveRestaurant(event))
     }
 
     getRestaurants(city) {
         return fetch(this.baseUrl + "/cities/" + city + "/restaurants").then(resp => resp.json())
     }
 
-  
     handleRestSelection(event) {
         if (event.target.value === "none") {
             return
         } else {
-            this.listRestaurants(parseInt(event.target.value))
+            this.fetchRestaurants(parseInt(event.target.value))
         }
     }
 
-    listRestaurants(city) {
+    fetchRestaurants(city) {
         this.list.innerHTML = `
         <div id="city-id" hidden="true">${city}</div>
         <h2 id="city-title">${City.findById(city).name}</h2>
@@ -32,22 +32,24 @@ class RestaurantsAdapter {
                 restaurant.attachToDom()
             })
         })
-    this.buttonDisplay()
+        this.createHeader()
     }
 
-    buttonDisplay() {
-        this.buttons.innerHTML = ""
-        const buttonsArray = ["Add New Restaurant", "Sort By", "Surprise Me"];
-        buttonsArray.forEach(button => {
-            const newDiv = document.createElement(`div`)
-            newDiv.id = `${button.toLowerCase().split(" ").join("-")}-button`
-            const newButton = document.createElement(`button`)
-            newButton.innerText = button
-            newDiv.append(newButton)
-            newDiv.addEventListener(`click`, event => this.handleRestaurantEvent(event))
-            this.buttons.append(newDiv)
-        })
+    createHeader() {
+        this.buttonsDiv.innerHTML = ""
+        const buttonsArray = ["Add New Restaurant", "Sort By"];
+        buttonsArray.forEach( button => this.createButton(button))
         this.appendSortForm()
+    }
+
+    createButton(button) {
+        const newDiv = document.createElement(`div`)
+        newDiv.id = `${button.toLowerCase().split(" ").join("-")}-button`
+        const newButton = document.createElement(`button`)
+        newButton.innerText = button
+        newDiv.append(newButton)
+        newDiv.addEventListener(`click`, event => this.handleRestaurantEvent(event))
+        this.buttonsDiv.append(newDiv)
     }
 
     appendSortForm() {
@@ -81,11 +83,11 @@ class RestaurantsAdapter {
             } else {
                 this.restaurantForm.hidden = true
             }
-        } else if (event.target.innerText == "Sort By") {
+        } else if (event.target.innerText === "Sort By") {
             const sortForm = document.getElementById("sort-form")
             if (sortForm.hidden === true) {
                 sortForm.hidden = false
-                this.appendSortedList()
+                this.createSortSelection()
             } else {
                 sortForm.hidden = true
             }
@@ -93,17 +95,14 @@ class RestaurantsAdapter {
         }
     }
 
-    appendSortedList() {
-        const sortList = document.getElementById("sort-select")
-        sortList.innerHTML = `
+    createSortSelection() {
+        const sortedList = document.getElementById("sort-select")
+        sortedList.innerHTML = `
         <option value=""></option>
         <option value="all">All</option>
         `
         Restaurant.all.forEach(rest => {
-            const newOption = document.createElement("option")
-            newOption.value = rest.style
-            newOption.innerText = rest.style
-            sortList.append(newOption)
+            sortedList.append(rest.sortSelection)
         })
     }
 
