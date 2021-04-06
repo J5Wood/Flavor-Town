@@ -5,8 +5,8 @@ class CitiesController < ApplicationController
     end
 
     def create
-        if City.find_by(name: params[:name])
-            render json: {error: "City already exists"}
+        if city = City.find_by(name: params[:name])
+            render json: CitySerializer.new(city)
         else
             city = City.new(city_params)
             if city.save
@@ -20,6 +20,6 @@ class CitiesController < ApplicationController
     private
 
     def city_params
-        params.require(:city).permit(:name)
+        params.require(:city).permit(:name, :id)
     end
 end
