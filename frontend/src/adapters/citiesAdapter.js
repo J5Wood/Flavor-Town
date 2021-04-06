@@ -15,18 +15,14 @@ class CitiesAdapter {
         return fetch(this.baseUrl).then(resp => resp.json())
     }
 
-    listCities() {
+    appendCities() {
         this.list.innerHTML = `
         <option value="none"></option>
         `
         City.all = []
         this.getCities().then(response => {
             response.data.forEach( city => {
-                const newCity = new City(city.attributes)
-                const newOption = document.createElement("option")
-                newOption.value = newCity.id
-                newOption.innerText = newCity.name
-                this.list.appendChild(newOption)       
+                new City(city.attributes)      
             })
         })
     }
@@ -40,6 +36,7 @@ class CitiesAdapter {
         <input type="submit" value="Add">
         `
         cityForm.addEventListener("submit", event => this.createCity(event))
+        
         this.newCityButton.hidden = true
         this.newCityDiv.append(cityForm)
     }
@@ -64,11 +61,7 @@ class CitiesAdapter {
             this.newCityButton.hidden = false
             const cityForm = document.getElementById("city-form")
             cityForm.remove()
-            const newCity = new City(response.data.attributes)
-            const newOption = document.createElement("option")
-            newOption.value = newCity.id
-            newOption.innerText = newCity.name
-            this.list.appendChild(newOption)
+            new City(response.data.attributes)
             restaurantsAdapter.listRestaurants(response.data.attributes.id)
         })
     }

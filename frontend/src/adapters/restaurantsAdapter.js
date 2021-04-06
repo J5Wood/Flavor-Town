@@ -76,7 +76,6 @@ class RestaurantsAdapter {
 
     handleRestaurantEvent(event) {
         if (event.target.innerText === "Add New Restaurant") {
-            console.log(event)
             if (this.restaurantForm.hidden === true) {
                 this.restaurantForm.hidden = false
             } else {
