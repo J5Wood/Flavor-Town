@@ -39,7 +39,7 @@ class Restaurant {
 
     buildListing() {
         this.element.innerHTML = `
-        <strong>${this.name}</strong><br><br>
+        <h2 class="listing-header"><strong>${this.name}</strong></h2><br>
         Style:
         <span>${this.style}</span><br><br>
         Neighborhood:
