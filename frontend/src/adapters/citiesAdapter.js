@@ -58,7 +58,6 @@ class CitiesAdapter {
             const cityForm = document.getElementById("city-form")
             cityForm.remove()
             this.listCities()
-        
         })
 
 
