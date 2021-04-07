@@ -147,6 +147,7 @@ class RestaurantsAdapter {
     appendToDom(resp) {
         const newListing = new Restaurant(resp.data.attributes)
         newListing.attachToDom()
+        restaurantsAdapter.createSortSelection()
         this.restaurantForm.hidden = true
     }
 
