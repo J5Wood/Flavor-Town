@@ -45,6 +45,7 @@ class RestaurantsAdapter {
     createButton(button) {
         const newDiv = document.createElement(`div`)
         newDiv.id = `${button.toLowerCase().split(" ").join("-")}-button`
+        newDiv.classList.add("buttons")
         const newButton = document.createElement(`button`)
         newButton.innerText = button
         newDiv.append(newButton)

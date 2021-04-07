@@ -61,6 +61,15 @@
 
 #city-title {
     color: #0f1610;
+    justify-self: center;
+}
+
+.buttons {
+    float: left;
+    margin-top: 30px;
+    margin-left: 10%;
+    width: 40%;
+    
 }
 
 .restaurant-listing {
