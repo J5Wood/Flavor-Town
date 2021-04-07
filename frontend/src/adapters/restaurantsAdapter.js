@@ -67,12 +67,18 @@ class RestaurantsAdapter {
     sortRestaurants(event) {
         if (event.target.value === "") {
             return
-        } else if (event.target.value === "all"){
-            Restaurant.all.forEach(rest => rest.attachToDom())
         } else {
-            const sortedRestaurants = Restaurant.filterByStyle(event.target.value)
-            this.list.innerHTML = ""
-            sortedRestaurants.forEach(rest => rest.attachToDom())
+            const city = City.findById(parseInt(document.getElementById("city-id").innerText))
+            this.list.innerHTML = `
+            <div id="city-id" hidden="true">${city.id}</div>
+            <h2 id="city-title">${city.name}</h2>
+            `
+            if (event.target.value === "all"){
+                Restaurant.all.forEach(rest => rest.attachToDom())
+            } else {
+                const sortedRestaurants = Restaurant.filterByStyle(event.target.value)
+                sortedRestaurants.forEach(rest => rest.attachToDom())
+            }
         }
     }
 
