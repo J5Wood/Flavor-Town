@@ -108,7 +108,7 @@ class RestaurantsAdapter {
         <option value="all">All</option>
         `
         Restaurant.all.forEach(rest => {
-            sortedList.append(rest.sortSelection)
+            sortedList.append(rest.createSortObject())
         })
     }
 
@@ -177,7 +177,8 @@ class RestaurantsAdapter {
         .then(resp => resp.json())
         .then(response => {
             const restaurant = Restaurant.findById(response.data.attributes.id)
-            restaurant.updateDom(response.data.attributes)          
+            restaurant.updateDom(response.data.attributes)
+            restaurantsAdapter.createSortSelection()
         })
     }
 

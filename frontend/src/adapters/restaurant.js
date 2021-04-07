@@ -18,7 +18,6 @@ class Restaurant {
         this.top_dishes = top_dishes
         this.id = id
         this.element = document.createElement(`div`)
-        this.sortSelection = this.createSortSelection()
         
         Restaurant.all.push(this)
     }
@@ -27,7 +26,7 @@ class Restaurant {
         this.buildListing()
         restaurantsAdapter.list.append(this.element)
     }
-
+    
     updateDom({name, style, neighborhood, notes, top_dishes}) {
         this.name = name,
         this.style = style,
@@ -82,7 +81,7 @@ class Restaurant {
         this.element.append(submitButton)
     }
 
-    createSortSelection() {
+    createSortObject() {
         const newOption = document.createElement("option")
         newOption.value = this.style
         newOption.innerText = this.style
