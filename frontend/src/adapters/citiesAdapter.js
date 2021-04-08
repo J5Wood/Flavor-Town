@@ -62,7 +62,9 @@ class CitiesAdapter {
             this.newCityButton.hidden = false
             const cityForm = document.getElementById("city-form")
             cityForm.remove()
-            new City(response.data.attributes)
+            if (!City.findById(response.data.attributes.id)) {
+                new City(response.data.attributes)
+            }
             restaurantsAdapter.fetchRestaurants(response.data.attributes.id)
         })
     }
