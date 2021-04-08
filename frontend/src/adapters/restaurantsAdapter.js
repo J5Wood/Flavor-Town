@@ -120,14 +120,14 @@ class RestaurantsAdapter {
         const style = event.target.style.value
         const neighborhood = event.target.neighborhood.value
         const notes = event.target.notes.value
-        const top_dishes = [event.target.top_dishes.value]
+        const top_dishes = [document.getElementById("top-dishes").value]
         const city_id = document.getElementById("city-id").innerText
 
         event.target.name.value = ""
         event.target.style.value = ""
         event.target.neighborhood.value = ""
         event.target.notes.value = ""
-        event.target.top_dishes.value = ""
+        document.getElementById("top-dishes").value = ""
 
         const newRest = {name, style, neighborhood, notes, city_id, top_dishes}
 

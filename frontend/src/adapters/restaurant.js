@@ -15,7 +15,7 @@ class Restaurant {
         this.style = style
         this.neighborhood = neighborhood 
         this.notes = notes
-        this.top_dishes = top_dishes
+        this.topDishes = top_dishes
         this.id = id
         this.element = document.createElement(`div`)
         
@@ -32,7 +32,7 @@ class Restaurant {
         this.style = style,
         this.neighborhood = neighborhood,
         this.notes = notes,
-        this.top_dishes = top_dishes
+        this.topDishes = top_dishes
         this.buildListing()
     }
 
@@ -46,7 +46,7 @@ class Restaurant {
         Notes:
         <span>${this.notes}</span><br><br>
         Top Dishes:
-        <span>${this.top_dishes.join(", ")}</span><br><br>
+        <span>${this.topDishes.join(", ")}</span><br><br>
         `
         const editButton = document.createElement("button")
         editButton.innerText = "Edit"
@@ -72,7 +72,7 @@ class Restaurant {
         Notes:
         <input type="text" id="update-notes-${this.id}" value="${this.notes}"><br><br>
         Top Dishes:
-        <input type="text" id="update-top-dishes-${this.id}" value="${this.top_dishes.join(", ")}"><br><br>
+        <input type="text" id="update-top-dishes-${this.id}" value="${this.topDishes.join(", ")}"><br><br>
         `
         const submitButton = document.createElement("button")
         submitButton.innerText = "Submit"
