@@ -22,6 +22,9 @@ class RestaurantsAdapter {
     fetchRestaurants(city) {
         this.list.innerHTML = `
         <div id="city-id" hidden="true">${city}</div>
+        `
+        const restaurantListHeader = document.getElementById("restaurant-list-header")
+        restaurantListHeader.innerHTML = `
         <h2 id="city-title">${City.findById(city).name}</h2>
         `
         Restaurant.all = []
@@ -72,7 +75,6 @@ class RestaurantsAdapter {
             const city = City.findById(parseInt(document.getElementById("city-id").innerText))
             this.list.innerHTML = `
             <div id="city-id" hidden="true">${city.id}</div>
-            <h2 id="city-title">${city.name}</h2>
             `
             if (event.target.value === "all"){
                 Restaurant.all.forEach(rest => rest.attachToDom())

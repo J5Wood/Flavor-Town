@@ -50,8 +50,15 @@
 
 #restaurant-list {
     color: #EBEBE9;
-    text-indent: 5%;
-    padding: 5%;
+    display: flex;
+    flex-flow: row wrap;
+    height: min-content;
+    width: 100%;
+}
+
+#restaurant-list-header {
+    margin-top: 10%;
+    text-align: center;
 }
 
 #body-heading {
@@ -76,18 +83,17 @@
 
 .restaurant-listing {
     width: 43%;
+    height: min-content;
     background-color:#49654C;
     border-style: double;
     border-color:#8AA989;
     border-radius: 5px;
     float: left;
-    margin: 1%;
-    min-height: max-content;
-    max-height: max-content;
-    overflow: auto;
+    margin: 2%;
+    padding-left: 2%;
 }
 
 .listing-header {
     color: #0f1610;
+    text-indent: 5%;
 }
-
