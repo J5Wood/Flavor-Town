@@ -108,8 +108,12 @@ class RestaurantsAdapter {
         <option value=""></option>
         <option value="all">All</option>
         `
+        const stylesList = []
         Restaurant.all.forEach(rest => {
-            sortedList.append(rest.createSortObject())
+            if (!stylesList.find(style => style === rest.style)) {
+                stylesList.push(rest.style)
+                sortedList.append(rest.createSortObject())
+            }
         })
     }
 
