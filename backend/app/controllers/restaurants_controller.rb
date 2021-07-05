@@ -1,7 +1,8 @@
 class RestaurantsController < ApplicationController
     def index
         if !!params[:city_id]
-            restaurants = Restaurant.where(city_id: params[:city_id])
+            city = City.find_by(id: params[:city_id])
+            restaurants = city.restaurants
         else
             restaurants = Restaurant.all
         end
