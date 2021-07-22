@@ -34158,3 +34158,56 @@ Processing by RestaurantsController#index as */*
 Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 1608)
 
 
+Started GET "/cities" for ::1 at 2021-07-12 13:53:26 -0700
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 5]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 6]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 7]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 43ms (Views: 27.7ms | ActiveRecord: 2.5ms | Allocations: 17105)
+
+
+Started GET "/cities/2/restaurants" for ::1 at 2021-07-12 13:53:31 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"2"}
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:4:in `index'
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/restaurants_controller.rb:9:in `index'
+Completed 200 OK in 15ms (Views: 11.2ms | ActiveRecord: 0.8ms | Allocations: 8516)
+
+
+Started GET "/cities/3/restaurants" for ::1 at 2021-07-12 13:53:53 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"3"}
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:4:in `index'
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/restaurants_controller.rb:9:in `index'
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.4ms | Allocations: 2151)
+
+
+Started GET "/cities/1/restaurants" for ::1 at 2021-07-12 13:53:58 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"1"}
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:4:in `index'
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/restaurants_controller.rb:9:in `index'
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 3061)
+
+
