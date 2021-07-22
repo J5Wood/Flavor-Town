@@ -1,6 +1,6 @@
 # Flavor Town
 
-Flavor Town is a single page web app where you can keep track of your must-eat restaurant destinations based on the city they're in.
+Tired of forgetting which restaurants you need to try while you're in town? Now you don't have to! Flavor Town is a single page web app where you can keep track of your must-eat restaurant destinations based on the city they're in.
 
 
 ![Flavor Town Screenshot](./flavor-town-photo.png)
