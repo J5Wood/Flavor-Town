@@ -12,6 +12,11 @@ Tired of forgetting which restaurants you need to try while you're in town? Now 
 * Full CRUD Functionality for list items
 
 
+## Demo
+
+[Video Walkthrough](https://drive.google.com/file/d/1xv52Q-zS8hbsRVxGX85m63s3o5UuNB3R/view?usp=sharing)
+
+
 ## To Install
 1. Fork and clone this repository.
 2. Navigate to the backend folder in your terminal.
