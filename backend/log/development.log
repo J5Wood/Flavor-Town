@@ -34211,3 +34211,61 @@ Processing by RestaurantsController#index as */*
 Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 3061)
 
 
+Started GET "/cities" for ::1 at 2021-07-26 12:35:03 -0700
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CitiesController#index as */*
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 2]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 3]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 4]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 5]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 6]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "restaurants"."id" FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 7]]
+  ↳ app/controllers/cities_controller.rb:4:in `index'
+Completed 200 OK in 71ms (Views: 43.7ms | ActiveRecord: 3.3ms | Allocations: 22210)
+
+
+Started GET "/cities/1/restaurants" for ::1 at 2021-07-26 12:35:15 -0700
+Processing by RestaurantsController#index as */*
+  Parameters: {"city_id"=>"1"}
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/restaurants_controller.rb:4:in `index'
+  [1m[36mRestaurant Load (0.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."city_id" = ?[0m  [["city_id", 1]]
+  ↳ app/controllers/restaurants_controller.rb:9:in `index'
+Completed 200 OK in 22ms (Views: 15.0ms | ActiveRecord: 1.1ms | Allocations: 8532)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20210809040829)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210809040829"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCity Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cities" WHERE "cities"."name" = ? LIMIT ?[0m  [["name", "Spokane"], ["LIMIT", 1]]
