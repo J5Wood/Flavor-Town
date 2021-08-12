@@ -17,9 +17,24 @@ class CitiesController < ApplicationController
         end
     end
 
+    def background
+        byebug
+        
+        # Getting file in params
+        # Need to save file to city
+
+        city = City.find_by(id: params[:id])
+
+        city.image = params[:image]
+    end
+
     private
 
     def city_params
-        params.require(:city).permit(:name, :id, :image)
+        params.require(:city).permit(:name, :id)
+    end
+
+    def background_params
+        params.permit(:image, :id)
     end
 end
