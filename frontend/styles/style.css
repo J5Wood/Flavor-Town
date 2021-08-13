@@ -1,28 +1,33 @@
 #body {
-    background-color:#E3E6DA;
+    background-color:rgb(252,251,250);
 }
 
 #container {
-    display: grid;
-    grid-template-columns: 20% auto;
-    grid-template-rows: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-content: space-around;
+    align-items: flex-start;
 }
 
 #header {
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
+    order: 1;
     height: 100vh;
-    background-color:#8AA989;
+    min-height: 600px;
+    min-width: 140px;
+    background: rgba(43,171,197,1);
+    background: linear-gradient(-47deg, rgba(172,80,242,1) 10%, rgba(0,10,0,1) 45%, rgba(43,171,197,1) 98%);
     border-style: solid;
     border-radius: 2px;
     border-color: #253628;
+    clip-path: polygon(100% 0, 100% 58%, 0% 100%, 0 100%, 0 0);
 }
 
 #main {
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
+    order: 2;
     height: 100vh;
-    background-color:#E3E6DA;
+    background-color: rgb(252,251,250);
 }
 
 #main-title-1 {
@@ -53,6 +58,7 @@
     display: flex;
     flex-flow: row wrap;
     height: min-content;
+    justify-content: center;
     width: 100%;
 }
 
@@ -72,6 +78,7 @@
 #city-title {
     color: #0f1610;
     justify-self: center;
+    align-content: center;
 }
 
 .buttons {
@@ -82,15 +89,26 @@
 }
 
 .restaurant-listing {
-    width: 43%;
+    width: 41%;
     height: min-content;
-    background-color:#49654C;
-    border-style: double;
-    border-color:#8AA989;
+    background: rgb(172,80,242);
+    background: linear-gradient(20deg, rgba(172,80,242,1) 15%, rgba(43,171,197,1) 87%);
+    border-style: ridge;
+    border-width: 5px;
+    border-color: #860cf5;
     border-radius: 5px;
-    float: left;
     margin: 2%;
     padding-left: 2%;
+    transition: height .8s, width .8s, transform .8s, box-shadow 1s;
+    
+}
+
+.restaurant-listing:hover {
+    height: 42%;
+    width: 42%;
+    transform: rotate(.3deg);
+    box-shadow: 5px 5px 5px 1px #0000007a;
+    -webkit-backface-visibility: hidden;
 }
 
 .listing-header {

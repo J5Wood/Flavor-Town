@@ -3,8 +3,14 @@ class RestaurantsAdapter {
         this.baseUrl = "http://localhost:3000"
         this.list = document.getElementById("restaurant-list")
         this.restaurantForm = document.getElementById("restaurant-form")
+        this.imageForm = document.getElementById(`image-form`)
+        this.imageFileInput = document.getElementById(`file-input`)
         this.buttonsDiv = document.getElementById("buttons-div")
         this.restaurantForm.addEventListener(`submit`, event => this.saveRestaurant(event))
+        this.imageForm.addEventListener("submit", event => this.handleImageSubmit(event))
+        this.imageFileInput.addEventListener("change", event => this.handleImageFileChange(event))
+        this.cityId = undefined;
+        this.imageFile = ""
     }
 
     getRestaurants(city) {
@@ -16,10 +22,11 @@ class RestaurantsAdapter {
             return
         } else {
             this.fetchRestaurants(parseInt(event.target.value))
-        }
+        } 
     }
 
     fetchRestaurants(city) {
+        this.cityId = city
         this.list.innerHTML = `
         <div id="city-id" hidden="true">${city}</div>
         `
@@ -27,6 +34,11 @@ class RestaurantsAdapter {
         restaurantListHeader.innerHTML = `
         <h2 id="city-title">${City.findById(city).name}</h2>
         `
+        const imageButton = document.createElement(`button`)
+        imageButton.addEventListener("click", event => this.displayImageForm(event))
+        imageButton.innerHTML = `Change Background`
+        restaurantListHeader.append(imageButton)
+
         Restaurant.all = []
         this.getRestaurants(city)
         .then(data => {
@@ -205,5 +217,30 @@ class RestaurantsAdapter {
 
     removeRestFromDom(id) {
         document.getElementById(`restaurant-${id}`).remove()
+    }
+
+    displayImageForm(){
+        this.imageForm.hidden = !this.imageForm.hidden
+    }
+
+    handleImageFileChange(e){
+        this.imageFile = e.target.files[0]
+    }
+
+    handleImageSubmit(e){
+        e.preventDefault()
+        this.displayImageForm()
+        let formData = new FormData();
+        formData.append(`image`, this.imageFile)
+
+        let configObj = {
+            method: 'POST',
+            body: formData
+        }
+        debugger
+        fetch(this.baseUrl + "/cities/" + this.cityId + "/background", configObj)
+        .then(resp => resp.json())
+        .then( resp => console.log(resp))
+        debugger
     }
 }
