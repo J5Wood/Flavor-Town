@@ -89,26 +89,42 @@
 }
 
 .restaurant-listing {
+    position: relative;
     width: 41%;
     height: min-content;
-    background: rgb(172,80,242);
-    background: linear-gradient(20deg, rgba(172,80,242,1) 15%, rgba(43,171,197,1) 87%);
+    background: rgb(43,171,197);
     border-style: ridge;
     border-width: 5px;
     border-color: #860cf5;
     border-radius: 5px;
     margin: 2%;
     padding-left: 2%;
-    transition: height .8s, width .8s, transform .8s, box-shadow 1s;
-    
+    transition: height .8s, width .8s,  box-shadow 1s;
+    z-index: 1;
 }
 
-.restaurant-listing:hover {
+.restaurant-listing:hover{
+    box-shadow: 5px 5px 5px 1px #0000007a;
     height: 42%;
     width: 42%;
-    transform: rotate(.3deg);
-    box-shadow: 5px 5px 5px 1px #0000007a;
-    -webkit-backface-visibility: hidden;
+}
+
+.restaurant-listing::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgb(172,80,242);
+    background: linear-gradient(20deg, rgba(172,80,242,1) 15%, rgba(43,171,197,1) 87%);
+    transition: opacity 0.5s linear;
+    z-index: -1;
+    opacity: 0;
+}
+
+.restaurant-listing:hover::before {
+    opacity: 1;
 }
 
 .listing-header {
