@@ -18,23 +18,19 @@ class CitiesController < ApplicationController
     end
 
     def background
-        byebug
-        
-        # Getting file in params
-        # Need to save file to city
-
         city = City.find_by(id: params[:id])
+        city.image.attach(params[:image])
+        if city.save
+            render json: CitySerializer.new(city)
+        else
+            render json: {error: "ERROR"}
+        end
 
-        city.image = params[:image]
     end
 
     private
 
     def city_params
-        params.require(:city).permit(:name, :id)
-    end
-
-    def background_params
-        params.permit(:image, :id)
+        params.permit(:name, :id, :image)
     end
 end

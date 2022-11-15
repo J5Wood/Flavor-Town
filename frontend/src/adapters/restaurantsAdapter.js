@@ -1,246 +1,284 @@
+// *** Need form validation on front end
+
 class RestaurantsAdapter {
-    constructor() {
-        this.baseUrl = "http://localhost:3000"
-        this.list = document.getElementById("restaurant-list")
-        this.restaurantForm = document.getElementById("restaurant-form")
-        this.imageForm = document.getElementById(`image-form`)
-        this.imageFileInput = document.getElementById(`file-input`)
-        this.buttonsDiv = document.getElementById("buttons-div")
-        this.restaurantForm.addEventListener(`submit`, event => this.saveRestaurant(event))
-        this.imageForm.addEventListener("submit", event => this.handleImageSubmit(event))
-        this.imageFileInput.addEventListener("change", event => this.handleImageFileChange(event))
-        this.cityId = undefined;
-        this.imageFile = ""
-    }
+  constructor() {
+    this.baseUrl = "http://localhost:3000";
+    this.list = document.getElementById("restaurant-list");
+    this.restaurantForm = document.getElementById("restaurant-form");
+    this.imageForm = document.getElementById(`image-form`);
+    this.imageFileInput = document.getElementById(`file-input`);
+    this.buttonsDiv = document.getElementById("buttons-div");
+    this.restaurantForm.addEventListener(`submit`, (event) =>
+      this.saveRestaurant(event)
+    );
+    this.imageForm.addEventListener("submit", (event) =>
+      this.handleImageSubmit(event)
+    );
+    this.imageFileInput.addEventListener("change", (event) =>
+      this.handleImageFileChange(event)
+    );
+    this.cityId = undefined;
+    this.imageFile = "";
+  }
 
-    getRestaurants(city) {
-        return fetch(this.baseUrl + "/cities/" + city + "/restaurants").then(resp => resp.json())
-    }
+  getRestaurants(city) {
+    return fetch(this.baseUrl + "/cities/" + city + "/restaurants").then(
+      (resp) => resp.json()
+    );
+  }
 
-    handleRestSelection(event) {
-        if (event.target.value === "none") {
-            return
-        } else {
-            this.fetchRestaurants(parseInt(event.target.value))
-        } 
+  handleRestSelection(event) {
+    if (event.target.value === "none") {
+      return;
+    } else {
+      this.fetchRestaurants(parseInt(event.target.value));
     }
+  }
 
-    fetchRestaurants(city) {
-        this.cityId = city
-        this.list.innerHTML = `
+  fetchRestaurants(city) {
+    this.cityId = city;
+    this.list.innerHTML = `
         <div id="city-id" hidden="true">${city}</div>
-        `
-        const restaurantListHeader = document.getElementById("restaurant-list-header")
-        restaurantListHeader.innerHTML = `
+        `;
+    const restaurantListHeader = document.getElementById(
+      "restaurant-list-header"
+    );
+    restaurantListHeader.innerHTML = `
         <h2 id="city-title">${City.findById(city).name}</h2>
-        `
-        const imageButton = document.createElement(`button`)
-        imageButton.addEventListener("click", event => this.displayImageForm(event))
-        imageButton.innerHTML = `Change Background`
-        restaurantListHeader.append(imageButton)
+        `;
+    const imageButton = document.createElement(`button`);
+    imageButton.addEventListener("click", (event) =>
+      this.displayImageForm(event)
+    );
+    imageButton.innerHTML = `Change Background`;
+    restaurantListHeader.append(imageButton);
 
-        Restaurant.all = []
-        this.getRestaurants(city)
-        .then(data => {
-            data.data.forEach(obj => {
-                let restaurant = new Restaurant(obj.attributes)
-                restaurant.attachToDom()
-            })
-        })
-        this.createHeader()
-    }
+    Restaurant.all = [];
+    this.getRestaurants(city).then((data) => {
+      data.data.forEach((obj) => {
+        let restaurant = new Restaurant(obj.attributes);
+        restaurant.attachToDom();
+      });
+    });
+    this.createHeader();
+  }
 
-    createHeader() {
-        this.buttonsDiv.innerHTML = ""
-        const buttonsArray = ["Add New Restaurant", "Sort By"];
-        buttonsArray.forEach( button => this.createButton(button))
-        this.appendSortForm()
-    }
+  createHeader() {
+    this.buttonsDiv.innerHTML = "";
+    const buttonsArray = ["Add New Restaurant", "Sort By"];
+    buttonsArray.forEach((button) => this.createButton(button));
+    this.appendSortForm();
+  }
 
-    createButton(button) {
-        const newDiv = document.createElement(`div`)
-        newDiv.id = `${button.toLowerCase().split(" ").join("-")}-button`
-        newDiv.classList.add("buttons")
-        const newButton = document.createElement(`button`)
-        newButton.innerText = button
-        newDiv.append(newButton)
-        newDiv.addEventListener(`click`, event => this.handleRestaurantEvent(event))
-        this.buttonsDiv.append(newDiv)
-    }
+  createButton(button) {
+    const newDiv = document.createElement(`div`);
+    newDiv.id = `${button.toLowerCase().split(" ").join("-")}-button`;
+    newDiv.classList.add("buttons");
+    const newButton = document.createElement(`button`);
+    newButton.innerText = button;
+    newDiv.append(newButton);
+    newDiv.addEventListener(`click`, (event) =>
+      this.handleRestaurantEvent(event)
+    );
+    this.buttonsDiv.append(newDiv);
+  }
 
-    appendSortForm() {
-        const sortByButton = document.getElementById("sort-by-button")
-        const sortForm = document.createElement("form")
-        sortForm.id = "sort-form"
-        sortForm.hidden = true
-        const restSelect = document.createElement("select")
-        restSelect.id = "sort-select"
-        restSelect.addEventListener("change", event => this.sortRestaurants(event))
-        sortForm.appendChild(restSelect)
-        sortByButton.append(sortForm)
-    }
+  appendSortForm() {
+    const sortByButton = document.getElementById("sort-by-button");
+    const sortForm = document.createElement("form");
+    sortForm.id = "sort-form";
+    sortForm.hidden = true;
+    const restSelect = document.createElement("select");
+    restSelect.id = "sort-select";
+    restSelect.addEventListener("change", (event) =>
+      this.sortRestaurants(event)
+    );
+    sortForm.appendChild(restSelect);
+    sortByButton.append(sortForm);
+  }
 
-    sortRestaurants(event) {
-        if (event.target.value === "") {
-            return
-        } else {
-            const city = City.findById(parseInt(document.getElementById("city-id").innerText))
-            this.list.innerHTML = `
+  sortRestaurants(event) {
+    if (event.target.value === "") {
+      return;
+    } else {
+      const city = City.findById(
+        parseInt(document.getElementById("city-id").innerText)
+      );
+      this.list.innerHTML = `
             <div id="city-id" hidden="true">${city.id}</div>
-            `
-            if (event.target.value === "all"){
-                Restaurant.all.forEach(rest => rest.attachToDom())
-            } else {
-                const sortedRestaurants = Restaurant.filterByStyle(event.target.value)
-                sortedRestaurants.forEach(rest => rest.attachToDom())
-            }
-        }
+            `;
+      if (event.target.value === "all") {
+        Restaurant.all.forEach((rest) => rest.attachToDom());
+      } else {
+        const sortedRestaurants = Restaurant.filterByStyle(event.target.value);
+        sortedRestaurants.forEach((rest) => rest.attachToDom());
+      }
     }
+  }
 
-    handleRestaurantEvent(event) {
-        if (event.target.innerText === "Add New Restaurant") {
-            if (this.restaurantForm.hidden === true) {
-                this.restaurantForm.hidden = false
-            } else {
-                this.restaurantForm.hidden = true
-            }
-        } else if (event.target.innerText === "Sort By") {
-            const sortForm = document.getElementById("sort-form")
-            if (sortForm.hidden === true) {
-                sortForm.hidden = false
-                this.createSortSelection()
-            } else {
-                sortForm.hidden = true
-            }
-
-        }
+  handleRestaurantEvent(event) {
+    if (event.target.innerText === "Add New Restaurant") {
+      if (this.restaurantForm.hidden === true) {
+        this.restaurantForm.hidden = false;
+      } else {
+        this.restaurantForm.hidden = true;
+      }
+    } else if (event.target.innerText === "Sort By") {
+      const sortForm = document.getElementById("sort-form");
+      if (sortForm.hidden === true) {
+        sortForm.hidden = false;
+        this.createSortSelection();
+      } else {
+        sortForm.hidden = true;
+      }
     }
+  }
 
-    createSortSelection() {
-        const sortedList = document.getElementById("sort-select")
-        sortedList.innerHTML = `
+  createSortSelection() {
+    const sortedList = document.getElementById("sort-select");
+    sortedList.innerHTML = `
         <option value=""></option>
         <option value="all">All</option>
-        `
-        const stylesList = []
-        Restaurant.all.forEach(rest => {
-            if (!stylesList.find(style => style === rest.style)) {
-                stylesList.push(rest.style)
-                sortedList.append(rest.createSortObject())
-            }
-        })
-    }
+        `;
+    const stylesList = [];
+    Restaurant.all.forEach((rest) => {
+      if (!stylesList.find((style) => style === rest.style)) {
+        stylesList.push(rest.style);
+        sortedList.append(rest.createSortObject());
+      }
+    });
+  }
 
-    saveRestaurant(event) {
-        event.preventDefault()
+  saveRestaurant(event) {
+    event.preventDefault();
 
-        const name = event.target.name.value
-        const style = event.target.style.value
-        const neighborhood = event.target.neighborhood.value
-        const notes = event.target.notes.value
-        const top_dishes = [document.getElementById("top-dishes").value]
-        const city_id = document.getElementById("city-id").innerText
+    const name = event.target.name.value;
+    const style = event.target.style.value;
+    const neighborhood = event.target.neighborhood.value;
+    const notes = event.target.notes.value;
+    const top_dishes = [document.getElementById("top-dishes").value];
+    const city_id = document.getElementById("city-id").innerText;
 
-        event.target.name.value = ""
-        event.target.style.value = ""
-        event.target.neighborhood.value = ""
-        event.target.notes.value = ""
-        document.getElementById("top-dishes").value = ""
+    event.target.name.value = "";
+    event.target.style.value = "";
+    event.target.neighborhood.value = "";
+    event.target.notes.value = "";
+    document.getElementById("top-dishes").value = "";
 
-        const newRest = {name, style, neighborhood, notes, city_id, top_dishes}
+    const newRest = { name, style, neighborhood, notes, city_id, top_dishes };
 
-        let configObj = {
-            method: `POST`,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify(newRest)
-        }
-        fetch(this.baseUrl + '/restaurants', configObj)
-        .then(resp => resp.json())
-        .then(response => this.appendToDom(response))
-    }
+    let configObj = {
+      method: `POST`,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(newRest),
+    };
+    fetch(this.baseUrl + "/restaurants", configObj)
+      .then((resp) => resp.json())
+      .then((response) => this.appendToDom(response));
+  }
 
-    appendToDom(resp) {
-        const newListing = new Restaurant(resp.data.attributes)
-        newListing.attachToDom()
-        restaurantsAdapter.createSortSelection()
-        this.restaurantForm.hidden = true
-    }
+  appendToDom(resp) {
+    const newListing = new Restaurant(resp.data.attributes);
+    newListing.attachToDom();
+    restaurantsAdapter.createSortSelection();
+    this.restaurantForm.hidden = true;
+  }
 
-    sendPatchRequest(event) {
-        const name = document.getElementById(`update-name-${event.target.id}`).value
-        const style = document.getElementById(`update-style-${event.target.id}`).value
-        const neighborhood = document.getElementById(`update-neighborhood-${event.target.id}`).value
-        const notes = document.getElementById(`update-notes-${event.target.id}`).value
-        const topDishes = [document.getElementById(`update-top-dishes-${event.target.id}`).value]
-        
-        const updatedRestaurant = {
-            name: name,
-            style: style,
-            neighborhood: neighborhood,
-            notes: notes,
-            top_dishes: topDishes
-        }
+  sendPatchRequest(event) {
+    const name = document.getElementById(
+      `update-name-${event.target.id}`
+    ).value;
+    const style = document.getElementById(
+      `update-style-${event.target.id}`
+    ).value;
+    const neighborhood = document.getElementById(
+      `update-neighborhood-${event.target.id}`
+    ).value;
+    const notes = document.getElementById(
+      `update-notes-${event.target.id}`
+    ).value;
+    const topDishes = [
+      document.getElementById(`update-top-dishes-${event.target.id}`).value,
+    ];
 
-        let configObj = {
-            method: `PATCH`,
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify(updatedRestaurant)
-        }
+    const updatedRestaurant = {
+      name: name,
+      style: style,
+      neighborhood: neighborhood,
+      notes: notes,
+      top_dishes: topDishes,
+    };
 
-        fetch(this.baseUrl + "/restaurants/" + event.target.id, configObj)
-        .then(resp => resp.json())
-        .then(response => {
-            const restaurant = Restaurant.findById(response.data.attributes.id)
-            restaurant.updateDom(response.data.attributes)
-            restaurantsAdapter.createSortSelection()
-        })
-    }
+    let configObj = {
+      method: `PATCH`,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(updatedRestaurant),
+    };
 
-    deleteRestaurant(restaurant) {
-        let configObj = {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            }
-        }
-        fetch(this.baseUrl + "/restaurants/" + restaurant.id, configObj)
-        .then(resp => resp.json())
-        .then( () => this.removeRestFromDom(restaurant.id))
-    }
+    fetch(this.baseUrl + "/restaurants/" + event.target.id, configObj)
+      .then((resp) => resp.json())
+      .then((response) => {
+        const restaurant = Restaurant.findById(response.data.attributes.id);
+        restaurant.updateDom(response.data.attributes);
+        restaurantsAdapter.createSortSelection();
+      });
+  }
 
-    removeRestFromDom(id) {
-        document.getElementById(`restaurant-${id}`).remove()
-    }
+  deleteRestaurant(restaurant) {
+    let configObj = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+    fetch(this.baseUrl + "/restaurants/" + restaurant.id, configObj)
+      .then((resp) => resp.json())
+      .then(() => this.removeRestFromDom(restaurant.id));
+  }
 
-    displayImageForm(){
-        this.imageForm.hidden = !this.imageForm.hidden
-    }
+  removeRestFromDom(id) {
+    document.getElementById(`restaurant-${id}`).remove();
+  }
 
-    handleImageFileChange(e){
-        this.imageFile = e.target.files[0]
-    }
+  // *** Should move image submission and handling to cities adapter or it's own file
 
-    handleImageSubmit(e){
-        e.preventDefault()
-        this.displayImageForm()
-        let formData = new FormData();
-        formData.append(`image`, this.imageFile)
+  displayImageForm() {
+    this.imageForm.hidden = !this.imageForm.hidden;
+  }
 
-        let configObj = {
-            method: 'POST',
-            body: formData
-        }
-        debugger
-        fetch(this.baseUrl + "/cities/" + this.cityId + "/background", configObj)
-        .then(resp => resp.json())
-        .then( resp => console.log(resp))
-        debugger
-    }
+  handleImageFileChange(e) {
+    this.imageFile = e.target.files[0];
+  }
+
+  handleImageSubmit(e) {
+    e.preventDefault();
+    this.displayImageForm();
+    let formData = new FormData();
+    formData.append(`image`, this.imageFile);
+
+    let configObj = {
+      method: "POST",
+      body: formData,
+    };
+
+    fetch(this.baseUrl + "/cities/" + this.cityId + "/background", configObj)
+      .then((resp) => resp.json())
+      .then((resp) => {
+        // console.log("Returned data");
+
+        // console.log(resp);
+        const restaurantListHeader = document.getElementById(
+          "restaurant-list-header"
+        );
+        debugger;
+        // restaurantListHeader.style.background = `no-repeat url("${resp.data.attributes.image_url}") no-repeat stretch `;
+      });
+  }
 }
