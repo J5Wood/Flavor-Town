@@ -59,6 +59,13 @@ class RestaurantsAdapter {
         let restaurant = new Restaurant(obj.attributes);
         restaurant.attachToDom();
       });
+      const img = data.data[0].attributes.image_url;
+      const body = document.querySelector("#body");
+      if (img.length > 0) {
+        body.style.background = `no-repeat center / cover fixed url(${img})`;
+      } else {
+        body.style.background = "#FFFFFF";
+      }
     });
     this.createHeader();
   }
@@ -271,14 +278,9 @@ class RestaurantsAdapter {
     fetch(this.baseUrl + "/cities/" + this.cityId + "/background", configObj)
       .then((resp) => resp.json())
       .then((resp) => {
-        // console.log("Returned data");
-
-        // console.log(resp);
-        const restaurantListHeader = document.getElementById(
-          "restaurant-list-header"
-        );
-        debugger;
-        // restaurantListHeader.style.background = `no-repeat url("${resp.data.attributes.image_url}") no-repeat stretch `;
+        const img = resp.data.attributes.image_url;
+        const body = document.querySelector("#body");
+        body.style.background = `no-repeat center / cover fixed url(${img})`;
       });
   }
 }

@@ -1,133 +1,141 @@
 #body {
-    background-color:rgb(252,251,250);
+  background-color: rgb(252, 251, 250);
 }
 
 #container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    align-content: space-around;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+  align-items: flex-start;
 }
 
 #header {
-    order: 1;
-    height: 100vh;
-    min-height: 600px;
-    min-width: 140px;
-    background: rgba(43,171,197,1);
-    background: linear-gradient(-47deg, rgba(172,80,242,1) 10%, rgba(0,10,0,1) 45%, rgba(43,171,197,1) 98%);
-    border-style: solid;
-    border-radius: 2px;
-    border-color: #253628;
-    clip-path: polygon(100% 0, 100% 58%, 0% 100%, 0 100%, 0 0);
+  order: 1;
+  height: 100vh;
+  min-height: 600px;
+  min-width: 140px;
+  background: rgba(43, 171, 197, 1);
+  background: linear-gradient(
+    -47deg,
+    rgba(172, 80, 242, 1) 10%,
+    rgba(0, 10, 0, 1) 45%,
+    rgba(43, 171, 197, 1) 98%
+  );
+  border-style: solid;
+  border-radius: 2px;
+  border-color: #253628;
+  clip-path: polygon(100% 0, 100% 58%, 0% 100%, 0 100%, 0 0);
 }
 
 #main {
-    order: 2;
-    height: 100vh;
-    background-color: rgb(252,251,250);
+  order: 2;
+  height: 100vh;
 }
 
 #main-title-1 {
-    margin-left: 5%;
-    color: #0f1610;
+  margin-left: 5%;
+  color: #0f1610;
 }
 
 #main-title-2 {
-    margin-left: 10%;
-    color: #0f1610;
+  margin-left: 10%;
+  color: #0f1610;
 }
 
 #select-city-title {
-    margin-left: 15%;
-    color: seashell;
+  margin-left: 15%;
+  color: seashell;
 }
 
 #city-select {
-    margin-left: 15%;
+  margin-left: 15%;
 }
 
 #create-city {
-    margin-left: 15%;
+  margin-left: 15%;
 }
 
 #restaurant-list {
-    color: #EBEBE9;
-    display: flex;
-    flex-flow: row wrap;
-    height: min-content;
-    justify-content: center;
-    width: 100%;
+  color: #ebebe9;
+  display: flex;
+  flex-flow: row wrap;
+  height: min-content;
+  justify-content: center;
+  width: 100%;
 }
 
 #restaurant-list-header {
-    margin-top: 10%;
-    text-align: center;
+  margin-top: 10%;
+  text-align: center;
 }
 
 #body-heading {
-    color:#253628;
+  color: #253628;
 }
 
 #new-city {
-    color: seashell;
+  color: seashell;
 }
 
 #city-title {
-    color: #0f1610;
-    justify-self: center;
-    align-content: center;
+  color: #0f1610;
+  justify-self: center;
+  align-content: center;
 }
 
 .buttons {
-    float: left;
-    margin-top: 30px;
-    margin-left: 10%;
-    width: 40%;
+  float: left;
+  margin-top: 30px;
+  margin-left: 10%;
+  width: 40%;
 }
 
 .restaurant-listing {
-    position: relative;
-    width: 41%;
-    height: min-content;
-    background: rgb(43,171,197);
-    border-style: ridge;
-    border-width: 5px;
-    border-color: #860cf5;
-    border-radius: 5px;
-    margin: 2%;
-    padding-left: 2%;
-    transition: height .8s, width .8s,  box-shadow 1s;
-    z-index: 1;
+  position: relative;
+  width: 41%;
+  height: min-content;
+  background: rgb(43, 171, 197);
+  border-style: ridge;
+  border-width: 5px;
+  border-color: #860cf5;
+  border-radius: 5px;
+  margin: 2%;
+  padding-left: 2%;
+  transition: height 0.8s, width 0.8s, box-shadow 1s;
+  z-index: 1;
 }
 
-.restaurant-listing:hover{
-    box-shadow: 5px 5px 5px 1px #0000007a;
-    height: 42%;
-    width: 42%;
+.restaurant-listing:hover {
+  box-shadow: 5px 5px 5px 1px #0000007a;
+  height: 42%;
+  width: 42%;
 }
 
-.restaurant-listing::before{
-    position: absolute;
-    content: "";
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgb(172,80,242);
-    background: linear-gradient(20deg, rgba(172,80,242,1) 15%, rgba(43,171,197,1) 87%);
-    transition: opacity 0.5s linear;
-    z-index: -1;
-    opacity: 0;
+.restaurant-listing::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgb(172, 80, 242);
+  background: linear-gradient(
+    20deg,
+    rgba(172, 80, 242, 1) 15%,
+    rgba(43, 171, 197, 1) 87%
+  );
+  transition: opacity 0.5s linear;
+  z-index: -1;
+  opacity: 0;
 }
 
 .restaurant-listing:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 .listing-header {
-    color: #0f1610;
-    text-indent: 5%;
+  color: #0f1610;
+  text-indent: 5%;
 }
